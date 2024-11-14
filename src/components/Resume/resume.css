@@ -1,0 +1,34 @@
+.resume-section {
+    position: relative !important;
+    padding-top: 100px !important;
+    padding-bottom: 30px !important;
+    background-color: var(--clr-bg) !important;
+  }
+  
+  .resume-heading {
+    color: var(--clr-txt) !important;
+    font-size: 2.3em !important;
+    font-weight: 500 !important;
+    padding-top: 10px !important;
+  }
+  
+  .download-button {
+    max-width: 250px !important;
+    color: var(--clr-txt) !important;
+    background: transparent !important;
+    border-color: var(--clr-primary) !important;
+  }
+  
+  .download-button:hover {
+    color: var(--clr-bg) !important;
+    background-color: var(--clr-primary) !important;
+  }
+  
+  .resume {
+    padding-top: 20px !important;
+  }
+  
+  .download-row {
+    justify-content: center;
+  }
+  
