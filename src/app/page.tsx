@@ -3,12 +3,8 @@ import { About } from '@/components/sections/About';
 import { Experience } from '@/components/sections/Experience';
 import { Projects } from '@/components/sections/Projects';
 import { Skills } from '@/components/sections/Skills';
-import { TechStack } from '@/components/sections/TechStack';
-import { Impact } from '@/components/sections/Impact';
-import { Timeline } from '@/components/sections/Timeline';
 import { Education } from '@/components/sections/Education';
 import { Certifications } from '@/components/sections/Certifications';
-import { Achievements } from '@/components/sections/Achievements';
 import { Resume } from '@/components/sections/Resume';
 import { Contact } from '@/components/sections/Contact';
 import { SectionDivider } from '@/components/ui/Section';
@@ -17,11 +13,15 @@ import { SectionDivider } from '@/components/ui/Section';
  * Single-page composition.
  *
  * Order is a narrative, not a checklist: identity → context → proof of work →
- * capability → evidence → credentials → the ask. A recruiter who stops reading at
- * any point has still seen the strongest available signal up to that point.
+ * capability → credentials → the ask. A recruiter who stops reading at any point
+ * has still seen the strongest available signal up to that point.
  *
- * This route is statically generated at build time — the entire page is HTML at
- * first byte, which is what makes the content crawlable and the LCP fast.
+ * Eight sections, down from thirteen. Impact, Timeline, Stack and Achievements were
+ * removed because each restated content the reader had already seen — length is not
+ * the same as substance, and repetition actively costs credibility.
+ *
+ * Statically generated at build time: the entire page is HTML at first byte, which
+ * is what makes the content crawlable and the LCP fast.
  */
 export default function HomePage() {
   return (
@@ -34,14 +34,9 @@ export default function HomePage() {
       <Projects />
       <SectionDivider />
       <Skills />
-      <TechStack />
-      <SectionDivider />
-      <Impact />
-      <Timeline />
       <SectionDivider />
       <Education />
       <Certifications />
-      <Achievements />
       <SectionDivider />
       <Resume />
       <SectionDivider />

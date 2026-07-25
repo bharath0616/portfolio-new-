@@ -199,17 +199,20 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
           </p>
         </div>
 
-        {/* Metrics */}
-        <dl className="flex flex-wrap gap-x-8 gap-y-4 border-y border-line-subtle py-5">
-          {project.metrics.map((metric) => (
-            <div key={metric.label} className="flex flex-col gap-1">
-              <dd className="font-mono text-2xl font-semibold leading-none text-signal">
-                {metric.value}
-              </dd>
-              <dt className="text-xs text-fg-muted">{metric.label}</dt>
-            </div>
-          ))}
-        </dl>
+        {/* Metrics — omitted entirely when a project has no measured outcome,
+            rather than padded with invented ones. */}
+        {project.metrics.length > 0 && (
+          <dl className="flex flex-wrap gap-x-8 gap-y-4 border-y border-line-subtle py-5">
+            {project.metrics.map((metric) => (
+              <div key={metric.label} className="flex flex-col gap-1">
+                <dd className="font-mono text-2xl font-semibold leading-none text-signal">
+                  {metric.value}
+                </dd>
+                <dt className="text-xs text-fg-muted">{metric.label}</dt>
+              </div>
+            ))}
+          </dl>
+        )}
 
         {/* Problem → Solution → Impact */}
         <div className="flex flex-col gap-5">

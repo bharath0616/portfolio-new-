@@ -46,7 +46,7 @@ src/
 │  ├─ skills.ts            # Grouped skills + where each was used
 │  ├─ education.ts
 │  ├─ certifications.ts
-│  └─ achievements.ts      # Leadership + impact statistics
+│  └─ achievements.ts      # Leadership role
 │
 ├─ components/
 │  ├─ ui/                  # Primitives: Reveal, Tilt, Magnetic, Counter, …
@@ -64,9 +64,29 @@ it. Adding a project means adding an object to `projects.ts` — no component is
 touched, and the command palette, JSON-LD, sitemap and OG image pick it up
 automatically.
 
-The `Timeline` section is *derived* from `experience`, `education` and
-`achievements` rather than duplicating them, so a corrected date propagates
-everywhere at once.
+### Sections
+
+`Hero → About → Experience → Projects → Skills → Education → Certifications →
+Résumé → Contact`
+
+Eight sections, down from thirteen. **Impact**, **Timeline**, **Stack** and
+**Achievements** were removed because each restated content the reader had already
+seen — Impact repeated metrics already shown on the roles and projects that
+produced them, Timeline repeated Experience and Education on one rail, Stack was a
+26-icon grid duplicating Skills, and two of Achievements' three cards repeated
+Education and Certifications. The surviving leadership entry moved into Education.
+
+Length is not the same as substance; repetition costs credibility.
+
+### Editorial rules
+
+- **Numbers appear once, at their source.** A metric lives on the role or project
+  that produced it, and nowhere else.
+- **No invented metrics.** A project with no measured outcome renders no metric
+  strip rather than padding one out. `metrics: []` is a valid, intentional state.
+- **Skills are curated, not exhaustive.** Editors, API clients and notebooks are
+  not differentiating skills. Legacy and niche tooling is omitted from Skills but
+  retained in Experience where it is a factual record of the work.
 
 ---
 
@@ -80,6 +100,13 @@ variables — a theme change is a variable swap, not a class-tree rewrite.
 - **Contrast** — every foreground token clears **WCAG AA 4.5:1** against every
   surface in *both* themes. Light-mode values are set independently rather than
   mirrored from dark, because the same lightness does not read the same on both.
+- **Naming rule** — a color token must never share a name with a font-size step
+  (`2xs … 6xl`). Both namespaces generate `text-<name>` and Tailwind resolves color
+  first, so `--color-base` beside `--text-base` silently turns `text-base` into a
+  color. Hence `canvas`, not `base`.
+- **Arbitrary values** — always type-hint colors as `text-[color:var(--x)]`. A bare
+  `text-[var(--x)]` is ambiguous and Tailwind resolves it to `color`, never
+  `font-size`.
 - **Type** — fluid `clamp()` scale interpolating between 360px and 1440px, so
   headings never jump at a breakpoint.
 - **Motion** — only `transform` and `opacity` are animated (compositor-only, no
@@ -105,7 +132,6 @@ variables — a theme change is a variable swap, not a class-tree rewrite.
 - Statically generated — full HTML at first byte
 - `next/font` self-hosts both families with size-adjusted fallbacks (no CLS)
 - `next/image` with AVIF/WebP, explicit dimensions and per-breakpoint `sizes`
-- Contribution calendar is `dynamic()` + `ssr: false`, off the critical path
 - Sections are server components; only the nav, palette and interactive sections
   ship JavaScript
 - `optimizePackageImports` keeps icon barrel files from bloating the bundle

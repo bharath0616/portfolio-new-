@@ -70,10 +70,9 @@ export const projects: readonly Project[] = [
       'Delivered real-time portfolio insight alongside tracking, removing the need for a second tool.',
       'Personalized stock and mutual-fund recommendations driven by the user\'s own financial profile.',
     ],
-    metrics: [
-      { value: '50%', label: 'Fewer API calls' },
-      { value: '3-in-1', label: 'Track · Invest · Advise' },
-    ],
+    // Only genuinely measured figures. "3-in-1" was a feature count dressed up as
+    // a metric — the kind of thing an interviewer discounts the rest of the page for.
+    metrics: [{ value: '50%', label: 'Fewer API calls' }],
     stack: ['MongoDB', 'Express', 'React', 'Node.js', 'REST APIs', 'AI Chatbot'],
     links: [{ label: 'Source', href: 'https://github.com/bharath0616/PFA', kind: 'github' }],
   },
@@ -107,10 +106,9 @@ export const projects: readonly Project[] = [
       'Advanced search narrows a full listing set to relevant results, which is the core buyer workflow.',
       'Full listing lifecycle: browse, create, update and manage, deployed and publicly reachable.',
     ],
-    metrics: [
-      { value: '2', label: 'Auth providers' },
-      { value: 'Live', label: 'Deployed & public' },
-    ],
+    // No measured outcome for this one, so it shows none rather than inventing a
+    // number. The live demo is the proof here.
+    metrics: [],
     stack: ['MongoDB', 'Express', 'React', 'Node.js', 'Redux Toolkit', 'JWT', 'Google OAuth'],
     links: [
       { label: 'Source', href: 'https://github.com/bharath0616/IvyEstate', kind: 'github' },
@@ -149,7 +147,6 @@ export const projects: readonly Project[] = [
     metrics: [
       { value: '90%', label: 'Model accuracy' },
       { value: '15%', label: 'Dataset quality gain' },
-      { value: '100+', label: 'Missing values handled' },
     ],
     stack: ['Python', 'scikit-learn', 'Flask', 'React', 'Pandas', 'NumPy'],
     links: [{ label: 'Source', href: 'https://github.com/bharath0616/AttriTrack', kind: 'github' }],
@@ -181,7 +178,7 @@ export const projects: readonly Project[] = [
       'Moves video review from manual observation toward automated analysis.',
       'Presents inference results through an operator-facing interface rather than raw model output.',
     ],
-    metrics: [{ value: 'ML', label: 'Video analytics' }],
+    metrics: [],
     stack: ['MongoDB', 'Express', 'React', 'Node.js', 'Machine Learning', 'Computer Vision'],
     links: [{ label: 'Source', href: 'https://github.com/bharath0616/Salus', kind: 'github' }],
   },

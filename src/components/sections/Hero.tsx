@@ -1,8 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { ArrowDown, Download, MapPin, Sparkles } from 'lucide-react';
-import { heroStats } from '@/content/achievements';
+import { ArrowDown, Download, MapPin } from 'lucide-react';
 import { site, socials } from '@/content/site';
 import { socialIcons, techStack } from '@/lib/icons';
 import { charReveal, staggerContainer, transitions } from '@/lib/motion';
@@ -10,7 +9,6 @@ import { cn, splitChars } from '@/lib/utils';
 import { usePrefersReducedMotion } from '@/hooks';
 import { StatusBadge } from '@/components/ui/Badge';
 import { LinkButton } from '@/components/ui/Button';
-import { Counter } from '@/components/ui/Counter';
 import { Magnetic } from '@/components/ui/Magnetic';
 import { Typewriter } from '@/components/ui/Typewriter';
 import { SectionGlow } from '@/components/ui/Backdrop';
@@ -18,9 +16,8 @@ import { SectionGlow } from '@/components/ui/Backdrop';
 /**
  * Hero.
  *
- * Everything a recruiter needs in the first 15 seconds is above the fold and in
- * reading order: status → name → current role → one-line value proposition →
- * résumé and contact actions → quantified proof.
+ * Reading order is the recruiter's scan order: status → name → current role →
+ * one-line value proposition → résumé and contact actions.
  *
  * The name renders as real, selectable text (per-character spans, not an image or
  * canvas), so it is copyable, searchable, indexable and readable by assistive tech.
@@ -53,18 +50,29 @@ export function Hero() {
             <StatusBadge>{site.availability.label}</StatusBadge>
           </motion.div>
 
-          {/* Name */}
-          <h1 id="hero-heading" className="text-6xl font-semibold leading-[0.95]">
+          {/*
+            Name.
+
+            Solid `text-fg`, deliberately NOT gradient-clipped text. Each character
+            is its own transformed element for the stagger, and a transformed child
+            establishes its own containing block — so a `background-clip: text`
+            gradient set on the parent cannot paint through the children, while the
+            parent's `color: transparent` still inherits down to them. That renders
+            invisible glyphs in both themes. Solid colour also gives this line the
+            strongest contrast on the page (16.6:1), which is right for the single
+            most important piece of text here.
+          */}
+          <h1 id="hero-heading" className="text-6xl font-semibold leading-[0.95] text-fg">
             <span className="sr-only">{site.name}</span>
             {reduced ? (
-              <span aria-hidden className="text-gradient block">
+              <span aria-hidden className="block">
                 {site.name}
               </span>
             ) : (
               <motion.span
                 aria-hidden
                 variants={staggerContainer(0.028, 0.15)}
-                className="text-gradient block [perspective:800px]"
+                className="block [perspective:800px]"
               >
                 {nameChars.map((char, index) => (
                   <motion.span
@@ -100,27 +108,21 @@ export function Hero() {
             {site.tagline}
           </motion.p>
 
-          {/* Location */}
+          {/* Context line */}
           <motion.p
             variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}
             transition={transitions.base}
-            className="flex flex-wrap items-center gap-x-5 gap-y-2 text-sm text-fg-muted"
+            className="flex items-center gap-2 text-sm text-fg-muted"
           >
-            <span className="flex items-center gap-2">
-              <MapPin className="size-4 shrink-0 text-primary" aria-hidden />
-              {site.location}
-            </span>
-            <span className="flex items-center gap-2">
-              <Sparkles className="size-4 shrink-0 text-primary" aria-hidden />
-              {site.currentTitle} at {site.currentCompany}
-            </span>
+            <MapPin className="size-4 shrink-0 text-primary" aria-hidden />
+            {site.location}
           </motion.p>
 
           {/* Actions */}
           <motion.div
             variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}
             transition={transitions.base}
-            className="flex flex-wrap items-center gap-3"
+            className="mt-2 flex flex-wrap items-center gap-3"
           >
             <Magnetic strength={0.25}>
               <LinkButton href={site.resumePath} variant="primary" size="lg" download>
@@ -162,45 +164,21 @@ export function Hero() {
               })}
             </ul>
           </motion.div>
-
-          {/* Proof strip */}
-          <motion.dl
-            variants={{ hidden: { opacity: 0, y: 14 }, visible: { opacity: 1, y: 0 } }}
-            transition={transitions.base}
-            className="mt-4 grid w-full max-w-2xl grid-cols-2 gap-x-6 gap-y-6 border-t border-line-subtle pt-8 sm:grid-cols-4"
-          >
-            {heroStats.map((stat) => (
-              <div key={stat.id} className="flex flex-col gap-1">
-                <dt className="sr-only">{stat.label}</dt>
-                <dd className="font-mono text-3xl font-semibold leading-none text-fg">
-                  <Counter value={stat.value} prefix={stat.prefix} suffix={stat.suffix} />
-                </dd>
-                <span className="text-xs leading-snug text-fg-muted">
-                  {stat.label}
-                </span>
-              </div>
-            ))}
-          </motion.dl>
         </motion.div>
       </div>
 
       {/* Technology marquee — visual texture and a fast read of the stack. */}
       <div
-        className="mask-fade-x pointer-events-none mt-16 select-none overflow-hidden"
+        className="mask-fade-x pointer-events-none mt-20 select-none overflow-hidden"
         aria-hidden
         data-decorative-motion
       >
         <div className="flex w-max animate-[marquee_42s_linear_infinite] gap-12 pr-12">
           {/* Duplicated once so the -50% translate loops seamlessly. */}
           {[...techStack, ...techStack].map((tech, index) => (
-            <span
-              key={`${tech.name}-${index}`}
-              className="flex items-center gap-2.5 text-fg-faint"
-            >
+            <span key={`${tech.name}-${index}`} className="flex items-center gap-2.5 text-fg-faint">
               <tech.Icon className="size-5 shrink-0" />
-              <span className="whitespace-nowrap font-mono text-xs">
-                {tech.name}
-              </span>
+              <span className="whitespace-nowrap font-mono text-xs">{tech.name}</span>
             </span>
           ))}
         </div>

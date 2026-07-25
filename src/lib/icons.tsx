@@ -22,17 +22,12 @@ import {
   SiPandas,
   SiNumpy,
   SiDocker,
-  SiPostman,
   SiGit,
-  SiJquery,
-  SiBitbucket,
-  SiJupyter,
   SiMysql,
 } from 'react-icons/si';
 // LinkedIn, AWS and Salesforce marks were dropped from the `si` set in react-icons v5;
 // the Font Awesome 6 set still carries them.
 import { FaAws, FaLinkedin, FaSalesforce } from 'react-icons/fa6';
-import { TbBrandVscode } from 'react-icons/tb';
 import { VscAzure } from 'react-icons/vsc';
 import { Mail, Phone, Users, Award, Trophy, Target, Code, Layers, Brain, Wrench, Database, Cloud } from 'lucide-react';
 
@@ -85,34 +80,34 @@ export type TechIcon = {
 
 /**
  * Technology marquee. Ordered to open with the strongest signals.
+ *
  * Colors are the official brand hexes; they appear only on hover so the default
  * state stays monochrome and calm.
+ *
+ * Kept in sync with `content/skills.ts` — editors, API clients and notebooks were
+ * dropped because "VS Code" and "Postman" are not differentiating skills, and every
+ * extra logo dilutes the ones that matter.
  */
 export const techStack: readonly TechIcon[] = [
   { name: 'React', Icon: SiReact, color: '#61DAFB' },
   { name: 'Next.js', Icon: SiNextdotjs, color: '#FFFFFF' },
   { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
-  { name: 'JavaScript', Icon: SiJavascript, color: '#F7DF1E' },
+  { name: 'Python', Icon: SiPython, color: '#3776AB' },
+  { name: 'PyTorch', Icon: SiPytorch, color: '#EE4C2C' },
+  { name: 'TensorFlow', Icon: SiTensorflow, color: '#FF6F00' },
+  { name: 'scikit-learn', Icon: SiScikitlearn, color: '#F7931E' },
+  { name: 'Pandas', Icon: SiPandas, color: '#150458' },
+  { name: 'NumPy', Icon: SiNumpy, color: '#4DABCF' },
   { name: 'Node.js', Icon: SiNodedotjs, color: '#5FA04E' },
   { name: 'Express', Icon: SiExpress, color: '#FFFFFF' },
   { name: 'MongoDB', Icon: SiMongodb, color: '#47A248' },
-  { name: 'Python', Icon: SiPython, color: '#3776AB' },
+  { name: 'JavaScript', Icon: SiJavascript, color: '#F7DF1E' },
   { name: 'C++', Icon: SiCplusplus, color: '#00599C' },
   { name: 'SQL', Icon: SiMysql, color: '#4479A1' },
   { name: 'Tailwind CSS', Icon: SiTailwindcss, color: '#06B6D4' },
   { name: 'Redux', Icon: SiRedux, color: '#764ABC' },
   { name: 'Flask', Icon: SiFlask, color: '#FFFFFF' },
-  { name: 'scikit-learn', Icon: SiScikitlearn, color: '#F7931E' },
-  { name: 'TensorFlow', Icon: SiTensorflow, color: '#FF6F00' },
-  { name: 'PyTorch', Icon: SiPytorch, color: '#EE4C2C' },
-  { name: 'Pandas', Icon: SiPandas, color: '#150458' },
-  { name: 'NumPy', Icon: SiNumpy, color: '#4DABCF' },
-  { name: 'Jupyter', Icon: SiJupyter, color: '#F37626' },
   { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
   { name: 'Git', Icon: SiGit, color: '#F05032' },
-  { name: 'Bitbucket', Icon: SiBitbucket, color: '#0052CC' },
-  { name: 'Postman', Icon: SiPostman, color: '#FF6C37' },
-  { name: 'VS Code', Icon: TbBrandVscode, color: '#007ACC' },
   { name: 'Salesforce', Icon: FaSalesforce, color: '#00A1E0' },
-  { name: 'jQuery', Icon: SiJquery, color: '#0769AD' },
 ] as const;

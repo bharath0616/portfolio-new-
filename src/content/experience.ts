@@ -46,10 +46,11 @@ export const experience: readonly Experience[] = [
       'Resolved 20+ production issues to improve system stability, and built reusable components that cut frontend effort by 25%.',
       'Used Git and Bitbucket for version control, enabling collaborative development, code reviews, and CI/CD integration.',
     ],
+    // Three, not five. Past ~3 the eye stops reading them as facts and starts
+    // reading them as decoration; the rest stay in the expandable highlights.
     metrics: [
       { value: '30–40%', label: 'Query time reduced' },
       { value: '10K+', label: 'Records / transaction' },
-      { value: '20+', label: 'Production issues resolved' },
       { value: '25%', label: 'Frontend effort saved' },
     ],
     stack: ['Apex', 'LWC', 'JavaScript', 'SOQL', 'REST APIs', 'Git', 'Bitbucket', 'CI/CD', 'Agile'],

@@ -1,6 +1,17 @@
 import { ImageResponse } from 'next/og';
 import { site } from '@/content/site';
-import { heroStats } from '@/content/achievements';
+
+/**
+ * Capability line for the card footer. Named competencies rather than counted
+ * statistics — a share preview has one line of space, and "Full-Stack Engineering"
+ * tells a recruiter more at a glance than "4 projects" does.
+ */
+const CAPABILITIES = [
+  'Full-Stack Engineering',
+  'APIs & Backend',
+  'Applied Machine Learning',
+  'React · Next.js · Node.js',
+] as const;
 
 /**
  * Dynamically generated social preview card.
@@ -139,21 +150,31 @@ export default async function OpenGraphImage() {
           </div>
         </div>
 
-        {/* Stat strip */}
+        {/* Capability strip */}
         <div
           style={{
             display: 'flex',
-            gap: 64,
+            gap: 40,
+            flexWrap: 'wrap',
             borderTop: '1px solid rgba(255,255,255,0.12)',
             paddingTop: 32,
           }}
         >
-          {heroStats.map((stat) => (
-            <div key={stat.id} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
-              <div style={{ display: 'flex', fontSize: 40, fontWeight: 700, color: '#ffffff' }}>
-                {`${stat.prefix ?? ''}${stat.value}${stat.suffix ?? ''}`}
-              </div>
-              <div style={{ display: 'flex', fontSize: 20, color: '#8b93a6' }}>{stat.label}</div>
+          {CAPABILITIES.map((item) => (
+            <div
+              key={item}
+              style={{ display: 'flex', alignItems: 'center', gap: 12, fontSize: 24, color: '#c8cede' }}
+            >
+              <div
+                style={{
+                  display: 'flex',
+                  width: 6,
+                  height: 6,
+                  borderRadius: '50%',
+                  background: '#7ba2ff',
+                }}
+              />
+              {item}
             </div>
           ))}
         </div>

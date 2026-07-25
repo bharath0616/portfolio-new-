@@ -81,18 +81,22 @@ export type NavItem = {
   inNav: boolean;
 };
 
-/** Section order is the narrative order: who → proof → depth → contact. */
+/**
+ * Section order is the narrative order: who → proof → depth → contact.
+ *
+ * Trimmed in the crisp pass. Removed: Impact (restated metrics already shown on the
+ * roles and projects that produced them), Timeline (restated Experience and
+ * Education on one rail), Stack (a 26-icon grid duplicating Skills), and
+ * Achievements (two of its three cards restated Education and Certifications).
+ * Every one was a second telling of something the reader had already been told.
+ */
 export const navItems: readonly NavItem[] = [
   { id: 'about', label: 'About', inNav: true },
   { id: 'experience', label: 'Experience', inNav: true },
   { id: 'projects', label: 'Projects', inNav: true },
   { id: 'skills', label: 'Skills', inNav: true },
-  { id: 'stack', label: 'Stack', inNav: false },
-  { id: 'impact', label: 'Impact', inNav: false },
-  { id: 'timeline', label: 'Timeline', inNav: false },
   { id: 'education', label: 'Education', inNav: false },
   { id: 'certifications', label: 'Certifications', inNav: false },
-  { id: 'achievements', label: 'Achievements', inNav: false },
   { id: 'resume', label: 'Resume', inNav: true },
   { id: 'contact', label: 'Contact', inNav: true },
 ] as const;

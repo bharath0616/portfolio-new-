@@ -1,14 +1,19 @@
-import { GraduationCap } from 'lucide-react';
+import { GraduationCap, Users } from 'lucide-react';
 import { education } from '@/content/education';
+import { leadership } from '@/content/achievements';
 import { Section, SectionHeader } from '@/components/ui/Section';
-import { RevealItem, StaggerGroup } from '@/components/ui/Reveal';
+import { Reveal, RevealItem, StaggerGroup } from '@/components/ui/Reveal';
 
 /**
- * Education.
+ * Education, with the leadership role folded in.
  *
  * The score is promoted to the visual anchor of each card — a strong CGPA or board
  * percentage is a screening filter at many companies, so it should not be buried in
  * a line of prose.
+ *
+ * Leadership lives here rather than in its own section: it is one entry, and a
+ * whole section for a single card reads as padding. It is still the signal most
+ * engineering portfolios omit, so it keeps a distinct visual treatment.
  */
 export function Education() {
   return (
@@ -62,6 +67,39 @@ export function Education() {
             </RevealItem>
           ))}
         </StaggerGroup>
+
+        {/* Leadership */}
+        <Reveal delay={0.1}>
+          <article className="mt-5 flex flex-col gap-5 rounded-[var(--radius-card)] border border-line-subtle bg-elevated p-6 sm:flex-row sm:items-start sm:gap-8 sm:p-7">
+            <span
+              className="flex size-10 shrink-0 items-center justify-center rounded-xl border border-line-subtle bg-subtle text-primary"
+              aria-hidden
+            >
+              <Users className="size-5" />
+            </span>
+
+            <div className="flex flex-1 flex-col gap-3">
+              <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                <h3 className="text-lg font-semibold leading-snug text-fg">
+                  {leadership.title} ·{' '}
+                  <span className="text-primary">{leadership.organization}</span>
+                </h3>
+                <span className="font-mono text-xs text-fg-faint">{leadership.period}</span>
+              </div>
+
+              <p className="text-sm leading-relaxed text-fg-secondary">{leadership.detail}</p>
+
+              <ul className="flex flex-col gap-2 sm:flex-row sm:flex-wrap sm:gap-x-8">
+                {leadership.points.map((point, index) => (
+                  <li key={index} className="flex gap-2.5 text-sm leading-relaxed text-fg-muted">
+                    <span className="mt-2 size-1 shrink-0 rounded-full bg-signal" aria-hidden />
+                    {point}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </article>
+        </Reveal>
       </div>
     </Section>
   );
