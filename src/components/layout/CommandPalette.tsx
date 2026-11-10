@@ -108,13 +108,14 @@ export function CommandPalette({
         })),
       {
         id: 'download-resume',
-        label: 'Download résumé',
+        label: 'View resume',
         group: 'Actions',
-        keywords: 'cv pdf hire',
+        keywords: 'cv pdf hire download drive',
         icon: Download,
+        hint: 'Google Drive',
         run: () => {
           onClose();
-          window.open(site.resumePath, '_blank', 'noopener,noreferrer');
+          window.open(site.resumeDriveUrl, '_blank', 'noopener,noreferrer');
         },
       },
       {

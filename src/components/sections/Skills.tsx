@@ -25,9 +25,9 @@ export function Skills() {
       <div className="container-page">
         <SectionHeader
           id="skills"
-          eyebrow="Capabilities"
-          title="The stack, and where each part was proven."
-          description="Hover or focus any technology to see the role or project it was used in — nothing here is decorative."
+          eyebrow="Skills"
+          title="What I work with."
+          description="Hover over any skill to see where I've used it."
         />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-12 lg:gap-12">
@@ -82,7 +82,7 @@ export function Skills() {
                         {group.label}
                       </span>
                       <span className="hidden text-xs text-fg-muted lg:block">
-                        {group.skills.length} technologies
+                        {group.skills.length} skills
                       </span>
                     </span>
                   </button>
@@ -131,9 +131,9 @@ export function Skills() {
           <dl className="mt-12 flex flex-wrap items-center gap-x-8 gap-y-3 border-t border-line-subtle pt-6 text-xs">
             {(
               [
-                ['core', 'Core — daily, in production'],
-                ['strong', 'Strong — shipped repeatedly'],
-                ['working', 'Working — used in real projects'],
+                ['core', 'Use it every day'],
+                ['strong', 'Comfortable with it'],
+                ['working', "Have used it / still learning"],
               ] as const
             ).map(([level, label]) => (
               <div key={level} className="flex items-center gap-2.5">

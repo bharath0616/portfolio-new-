@@ -8,6 +8,8 @@ import { experience } from '@/content/experience';
 import { education } from '@/content/education';
 import { certifications } from '@/content/certifications';
 import { skillGroups } from '@/content/skills';
+import { projects } from '@/content/projects';
+import { leadership } from '@/content/achievements';
 import { cn } from '@/lib/utils';
 import { Section, SectionHeader } from '@/components/ui/Section';
 import { Reveal } from '@/components/ui/Reveal';
@@ -15,13 +17,8 @@ import { Magnetic } from '@/components/ui/Magnetic';
 import { Panel } from '@/components/ui/Card';
 
 /**
- * Résumé.
- *
- * The original site rendered a PNG screenshot of the PDF: unreadable on mobile,
- * invisible to search engines, and inaccessible to screen readers. This renders the
- * same content as real semantic HTML derived from the content layer — so it is
- * selectable, indexable, translatable, printable, and can never drift from the rest
- * of the site — with the actual PDF one click away.
+ * Resume — the same content as my PDF, shown as normal text on the page,
+ * with buttons to download the PDF or open it on Google Drive.
  */
 export function Resume() {
   const [downloaded, setDownloaded] = useState(false);
@@ -36,9 +33,9 @@ export function Resume() {
       <div className="container-page">
         <SectionHeader
           id="resume"
-          eyebrow="Résumé"
-          title="The one-page version."
-          description="Readable here, downloadable as a PDF. Both are generated from the same source."
+          eyebrow="Resume"
+          title="My resume."
+          description="A quick read below. You can also download the PDF or open it on Google Drive."
         />
 
         {/* Actions */}
@@ -77,7 +74,7 @@ export function Resume() {
             </Magnetic>
 
             <a
-              href={site.resumePath}
+              href={site.resumeDriveUrl}
               target="_blank"
               rel="noopener noreferrer"
               className={cn(
@@ -87,7 +84,7 @@ export function Resume() {
               )}
             >
               <FileText className="size-4" aria-hidden />
-              Open in browser
+              View on Google Drive
             </a>
 
             <button
@@ -169,6 +166,61 @@ export function Resume() {
                     </div>
                   ))}
                 </div>
+              </ResumeBlock>
+
+              {/* Projects (only the ones on the PDF) */}
+              <ResumeBlock title="Projects">
+                <div className="flex flex-col gap-5">
+                  {projects
+                    .filter((project) => project.onResume)
+                    .map((project) => (
+                      <div key={project.id}>
+                        <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                          <h5 className="text-base font-semibold text-fg">{project.title}</h5>
+                          <span className="flex gap-3 font-mono text-xs">
+                            {project.links.map((link) => (
+                              <a
+                                key={link.href}
+                                href={link.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="text-fg-faint transition-colors hover:text-primary"
+                              >
+                                {link.kind === 'github' ? 'GitHub' : link.label}
+                              </a>
+                            ))}
+                          </span>
+                        </div>
+                        <ul className="mt-2.5 flex flex-col gap-1.5">
+                          {project.impact.slice(0, 2).map((point, index) => (
+                            <li
+                              key={index}
+                              className="flex gap-2.5 text-sm leading-relaxed text-fg-muted"
+                            >
+                              <span
+                                className="mt-2 size-1 shrink-0 rounded-full bg-fg-faint"
+                                aria-hidden
+                              />
+                              {point}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    ))}
+                </div>
+              </ResumeBlock>
+
+              {/* Leadership */}
+              <ResumeBlock title="Leadership">
+                <div className="flex flex-wrap items-baseline justify-between gap-x-4 gap-y-1">
+                  <h5 className="text-base font-semibold text-fg">
+                    {leadership.title} · <span className="text-primary">{leadership.organization}</span>
+                  </h5>
+                  <span className="font-mono text-xs text-fg-faint">{leadership.period}</span>
+                </div>
+                <p className="mt-2.5 text-sm leading-relaxed text-fg-muted">
+                  {leadership.points.join(' ')}
+                </p>
               </ResumeBlock>
 
               {/* Skills */}

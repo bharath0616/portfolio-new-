@@ -79,7 +79,7 @@ export function Contact() {
           id="contact"
           eyebrow="Contact"
           title="Let's talk."
-          description="Open to software engineering roles and interesting problems. I reply to everything."
+          description="Have a question or an opportunity, or just want to say hi? Send me a message and I'll get back to you."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">
@@ -169,9 +169,9 @@ export function Contact() {
             </div>
 
             <p className="rounded-[var(--radius-card)] border border-line-subtle bg-tint-weak p-5 text-sm leading-relaxed text-fg-muted">
-              Currently {site.currentTitle.toLowerCase()} at {site.currentCompany} and{' '}
-              <span className="text-fg">{site.availability.label.toLowerCase()}</span>. Typical
-              reply time is under 24 hours.
+              I&apos;m currently working as an {site.currentTitle} at {site.currentCompany}, and
+              I&apos;m <span className="text-fg">{site.availability.label.toLowerCase()}</span>. I
+              usually reply within a day or two.
             </p>
           </div>
 
@@ -286,7 +286,7 @@ export function Contact() {
                         className="flex items-center gap-2 rounded-lg border border-[color-mix(in_oklab,var(--brand-signal)_30%,transparent)] bg-[color-mix(in_oklab,var(--brand-signal)_10%,transparent)] px-4 py-3 text-sm text-signal"
                       >
                         <Check className="size-4 shrink-0" aria-hidden />
-                        Thanks — your message is on its way. I&apos;ll reply within 24 hours.
+                        Thanks! I got your message and I&apos;ll get back to you soon.
                       </motion.p>
                     )}
                     {status === 'error' && (

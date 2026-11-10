@@ -1,17 +1,8 @@
 /**
- * Skills.
+ * Skills, grouped roughly the same way as on my resume.
  *
- * Curated, not exhaustive. A 40-item list reads as a keyword dump and dilutes the
- * things actually worth interviewing on, so this keeps only what is (a) in current
- * industry demand, (b) AI/ML relevant, or (c) something with real depth behind it.
- *
- * Deliberately no percentage bars: a self-assigned "React 85%" is unfalsifiable and
- * reads as filler. Each skill instead carries `context` — where it was actually used
- * — which is verifiable against the experience section.
- *
- * Cut in the crisp pass: jQuery and UiPath RPA (legacy / niche), VS Code, Postman,
- * Jupyter, Bitbucket and Agile (tools and process, not differentiating skills),
- * MLflow and "NLP libraries" (too thin to defend in an interview).
+ * Each skill has a level (how much I use it) and a short note on where I've
+ * used it, which shows up when you hover over it.
  */
 
 export type SkillLevel = 'core' | 'strong' | 'working';
@@ -19,7 +10,7 @@ export type SkillLevel = 'core' | 'strong' | 'working';
 export type Skill = {
   name: string;
   level: SkillLevel;
-  /** Where this was used in practice. Rendered on hover/focus. */
+  /** Where I've used it. Shown on hover/focus. */
   context: string;
 };
 
@@ -27,79 +18,84 @@ export type SkillGroup = {
   id: string;
   label: string;
   blurb: string;
-  icon: 'code' | 'layers' | 'brain' | 'database' | 'wrench';
+  icon: 'code' | 'layers' | 'brain' | 'database' | 'wrench' | 'cloud';
   skills: readonly Skill[];
 };
 
 export const skillGroups: readonly SkillGroup[] = [
   {
-    id: 'ai',
-    label: 'AI & Machine Learning',
-    blurb: 'From preprocessing and training through to a model served behind an API.',
-    icon: 'brain',
-    skills: [
-      { name: 'Python', level: 'strong', context: 'ML pipelines, preprocessing, model training' },
-      { name: 'scikit-learn', level: 'strong', context: '90% accuracy classifier in AttriTrack' },
-      { name: 'Prompt Engineering', level: 'strong', context: '~60% chatbot accuracy lift at Urbanchat.ai' },
-      { name: 'Vector Search', level: 'strong', context: 'Pinecone retrieval tuning at Urbanchat.ai' },
-      { name: 'Pandas', level: 'strong', context: 'Preprocessing 100+ missing values' },
-      { name: 'NumPy', level: 'strong', context: 'Numerical work underpinning ML pipelines' },
-      { name: 'PyTorch', level: 'working', context: 'Deep learning experimentation' },
-      { name: 'TensorFlow', level: 'working', context: 'Deep learning experimentation' },
-    ],
-  },
-  {
-    id: 'frontend',
-    label: 'Frontend',
-    blurb: 'Interfaces that stay fast and accessible as they grow.',
-    icon: 'layers',
-    skills: [
-      { name: 'React', level: 'core', context: 'Primary UI library since 2023' },
-      { name: 'Next.js', level: 'strong', context: 'App Router, SSG, server components' },
-      { name: 'TypeScript', level: 'strong', context: 'Typed application code, including this site' },
-      { name: 'Tailwind CSS', level: 'strong', context: 'Design-token driven styling' },
-      { name: 'Redux Toolkit', level: 'strong', context: 'Global state in IvyEstate' },
-    ],
-  },
-  {
-    id: 'backend',
-    label: 'Backend & APIs',
-    blurb: 'Services, persistence, and the contracts between systems.',
-    icon: 'database',
-    skills: [
-      { name: 'Node.js', level: 'core', context: 'Service layer at Urbanchat.ai and Neovatic' },
-      { name: 'Express', level: 'core', context: 'REST APIs across every full-stack project' },
-      { name: 'REST API Design', level: 'strong', context: 'Request/response mapping at PwC' },
-      { name: 'MongoDB', level: 'strong', context: 'Document modelling in the MERN stack' },
-      { name: 'SQL', level: 'strong', context: 'Relational querying and schema design' },
-      { name: 'Flask', level: 'working', context: 'Model serving in AttriTrack' },
-    ],
-  },
-  {
     id: 'languages',
-    label: 'Languages & Platform',
-    blurb: 'Fundamentals, plus the enterprise platform I build on daily.',
+    label: 'Languages',
+    blurb: 'The languages I write code in most.',
     icon: 'code',
     skills: [
-      { name: 'JavaScript', level: 'core', context: 'Full-stack product work across every role' },
-      { name: 'C++', level: 'strong', context: 'Data structures, algorithms, systems fundamentals' },
-      { name: 'Apex', level: 'strong', context: 'Business-critical backend logic at PwC' },
-      { name: 'LWC', level: 'strong', context: 'Lightning Web Components at PwC' },
-      { name: 'SOQL', level: 'strong', context: 'Query optimization — 30–40% faster at PwC' },
+      { name: 'JavaScript', level: 'core', context: 'Every day at work (LWC) and in my web projects' },
+      { name: 'Python', level: 'strong', context: 'ML projects and data cleaning' },
+      { name: 'SQL', level: 'strong', context: 'Queries in my projects, and SOQL at PwC' },
+      { name: 'C++', level: 'strong', context: 'DSA and coursework in college' },
     ],
   },
   {
-    id: 'delivery',
-    label: 'Delivery',
-    blurb: 'How the work ships and stays shipped.',
+    id: 'web',
+    label: 'Web Development',
+    blurb: 'Mostly the MERN stack. This site is built with Next.js and Tailwind.',
+    icon: 'layers',
+    skills: [
+      { name: 'React', level: 'strong', context: 'Frontend for most of my projects' },
+      { name: 'Node.js', level: 'strong', context: 'Backend APIs at Urbanchat.ai and in my projects' },
+      { name: 'Express', level: 'strong', context: 'REST APIs in my MERN projects' },
+      { name: 'MongoDB', level: 'strong', context: 'Database for my MERN projects' },
+      { name: 'Next.js', level: 'working', context: 'Used to build this portfolio' },
+      { name: 'Tailwind CSS', level: 'working', context: 'Styling for this portfolio' },
+      { name: 'Redux Toolkit', level: 'working', context: 'State management in IvyEstate' },
+      { name: 'jQuery', level: 'working', context: 'Simple DOM work and small scripts' },
+    ],
+  },
+  {
+    id: 'salesforce',
+    label: 'Salesforce',
+    blurb: 'What I work with day to day at PwC.',
+    icon: 'cloud',
+    skills: [
+      { name: 'Apex', level: 'core', context: 'Backend logic for client features at PwC' },
+      { name: 'LWC', level: 'core', context: 'UI components at PwC, including reusable ones' },
+      { name: 'SOQL', level: 'core', context: 'Writing and tuning queries over 10K+ records' },
+      { name: 'API Integrations', level: 'strong', context: 'Request/response mapping with external systems' },
+    ],
+  },
+  {
+    id: 'ml',
+    label: 'Machine Learning & AI',
+    blurb: "Things I've picked up through projects, courses and my Urbanchat.ai stint.",
+    icon: 'brain',
+    skills: [
+      { name: 'scikit-learn', level: 'strong', context: 'Logistic regression model in AttriTrack' },
+      { name: 'Pandas', level: 'strong', context: 'Cleaning data and handling missing values' },
+      { name: 'NumPy', level: 'strong', context: 'Number work in my ML projects' },
+      { name: 'Jupyter Notebook', level: 'strong', context: 'Where most of my ML work starts' },
+      { name: 'Prompt Engineering', level: 'strong', context: 'Improving chatbot answers at Urbanchat.ai' },
+      { name: 'Pinecone', level: 'working', context: 'Vector database tuning at Urbanchat.ai' },
+      { name: 'TensorFlow', level: 'working', context: 'Learning projects and coursework' },
+      { name: 'PyTorch', level: 'working', context: 'Learning projects and coursework' },
+      { name: 'NLP libraries', level: 'working', context: 'Basic text processing' },
+      { name: 'MLflow', level: 'working', context: 'Tracking ML experiments' },
+    ],
+  },
+  {
+    id: 'tools',
+    label: 'Tools',
+    blurb: 'What I use to write, test and ship code.',
     icon: 'wrench',
     skills: [
-      { name: 'Git', level: 'core', context: 'Version control across every role' },
-      { name: 'CI/CD', level: 'strong', context: 'Pipeline integration at PwC' },
-      { name: 'Docker', level: 'working', context: 'Containerized local environments' },
+      { name: 'Git', level: 'core', context: 'Version control at work and on my projects' },
+      { name: 'GitHub', level: 'core', context: 'Where all my personal projects live' },
+      { name: 'VS Code', level: 'core', context: 'My everyday editor' },
+      { name: 'Bitbucket', level: 'strong', context: 'Code reviews and CI/CD at PwC' },
+      { name: 'Postman', level: 'strong', context: 'Testing APIs' },
+      { name: 'Docker', level: 'working', context: 'Running apps in containers locally' },
     ],
   },
 ] as const;
 
-/** Flattened view for the command palette and structured data. */
+/** Flat list, used by the command palette and structured data. */
 export const allSkills = skillGroups.flatMap((g) => g.skills.map((s) => ({ ...s, group: g.label })));

@@ -18,7 +18,7 @@ const quickFacts = [
   { label: 'Currently', value: `${site.currentTitle} at ${site.currentCompany}` },
   { label: 'Based in', value: site.location },
   { label: 'Education', value: 'B.Tech CSBS, VIT — 8.77 CGPA' },
-  { label: 'Focus', value: 'Full-stack engineering, APIs, applied ML' },
+  { label: 'Work on', value: 'Salesforce, web apps, a bit of ML' },
 ] as const;
 
 /**
@@ -34,8 +34,8 @@ export function About() {
         <SectionHeader
           id="about"
           eyebrow="About"
-          title="Engineering that ends in a measurable outcome."
-          description="I care less about which framework was used and more about what changed after it shipped — latency, accuracy, effort removed."
+          title="A little about me."
+          description="Software engineer from Hyderabad, working at PwC since July 2025."
         />
 
         <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-16">

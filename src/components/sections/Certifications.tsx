@@ -21,8 +21,8 @@ export function Certifications() {
         <SectionHeader
           id="certifications"
           eyebrow="Certifications"
-          title="Verified across three cloud and AI providers."
-          description="Google, Microsoft and AWS credentials, plus applied machine learning."
+          title="Courses and certifications."
+          description="Cloud and AI certifications from Google, Anthropic, Microsoft and AWS, plus Machine Learning A–Z on Udemy. Click any card to view the certificate."
         />
 
         <StaggerGroup stagger={0.06} className="mt-14 grid gap-5 sm:grid-cols-2">
@@ -61,7 +61,7 @@ export function Certifications() {
                       rel="noopener noreferrer"
                       className="mt-auto inline-flex w-fit items-center gap-1.5 border-t border-line-subtle pt-4 text-sm font-medium text-fg-secondary transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                     >
-                      Verify credential
+                      View certificate
                       <ExternalLink className="size-3.5" aria-hidden />
                       <span className="sr-only">(opens in a new tab)</span>
                     </a>

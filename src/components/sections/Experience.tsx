@@ -34,8 +34,8 @@ export function Experience() {
         <SectionHeader
           id="experience"
           eyebrow="Experience"
-          title="Where I've shipped."
-          description="Three engineering roles across enterprise consulting, conversational AI, and automation — each with numbers attached."
+          title="Where I've worked."
+          description="My full-time job at PwC, plus two roles I did while I was still in college. Click a card to see more."
         />
 
         <ol className="mt-16 flex flex-col">

@@ -1,16 +1,12 @@
 import { ImageResponse } from 'next/og';
 import { site } from '@/content/site';
 
-/**
- * Capability line for the card footer. Named competencies rather than counted
- * statistics — a share preview has one line of space, and "Full-Stack Engineering"
- * tells a recruiter more at a glance than "4 projects" does.
- */
+/** Short list along the bottom of the share card. */
 const CAPABILITIES = [
-  'Full-Stack Engineering',
+  'Salesforce · Apex · LWC',
+  'MERN Stack',
   'APIs & Backend',
-  'Applied Machine Learning',
-  'React · Next.js · Node.js',
+  'Machine Learning',
 ] as const;
 
 /**
@@ -135,7 +131,7 @@ export default async function OpenGraphImage() {
             {site.name}
           </div>
           <div style={{ display: 'flex', fontSize: 36, color: '#7ba2ff', letterSpacing: -0.5 }}>
-            {site.currentTitle} at {site.currentCompany} · Full-Stack Engineer
+            {site.currentTitle} at {site.currentCompany} · {site.role}
           </div>
           <div
             style={{

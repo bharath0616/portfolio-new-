@@ -1,9 +1,6 @@
 /**
- * Education history.
- *
- * This is the single source of truth for dates: the Timeline section derives from
- * it, and the JSON-LD `alumniOf` graph is built from it. Correct a year here and it
- * corrects everywhere on the site at once.
+ * Education. Used by the Education section, the on-page resume and the
+ * structured data, so a change here shows up everywhere.
  */
 
 export type Education = {

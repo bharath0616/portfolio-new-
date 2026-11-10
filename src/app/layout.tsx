@@ -31,7 +31,7 @@ const jetbrainsMono = JetBrains_Mono({
   weight: ['400', '500', '600'],
 });
 
-const description = `${site.name} — ${site.currentTitle} at ${site.currentCompany}. Full-stack engineer working across React, Next.js, Node.js and applied machine learning. ${site.location}.`;
+const description = `${site.name}, ${site.currentTitle} at ${site.currentCompany}. Software engineer working with Salesforce (Apex, LWC), the MERN stack and some machine learning. Based in ${site.location}.`;
 
 export const metadata: Metadata = {
   // Makes every relative URL below resolve absolutely — required for OG tags.
@@ -49,14 +49,13 @@ export const metadata: Metadata = {
     site.name,
     'Software Engineer',
     'Full Stack Developer',
-    'Frontend Engineer',
+    'Salesforce Developer',
+    'Apex',
+    'LWC',
     'React Developer',
-    'Next.js Developer',
-    'Node.js Engineer',
+    'Node.js Developer',
     'MERN Stack',
-    'Machine Learning Engineer',
     'PwC',
-    'Salesforce Apex LWC',
     'Hyderabad',
     'India',
     'Portfolio',

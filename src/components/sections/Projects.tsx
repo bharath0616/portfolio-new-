@@ -47,9 +47,9 @@ export function Projects() {
       <div className="container-page">
         <SectionHeader
           id="projects"
-          eyebrow="Selected Work"
-          title="Four projects, each solving a problem I can defend."
-          description="Every entry below states the constraint it was built against and what measurably changed. Source is public for all of them."
+          eyebrow="Projects"
+          title="Things I've built."
+          description="A few projects from college and my free time. The code for all of them is on my GitHub."
         />
 
         {/* Filter */}
@@ -216,15 +216,15 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
 
         {/* Problem → Solution → Impact */}
         <div className="flex flex-col gap-5">
-          <CaseBlock icon={Target} label="Problem" tone="warning">
+          <CaseBlock icon={Target} label="The problem" tone="warning">
             {project.problem}
           </CaseBlock>
 
-          <CaseBlock icon={Lightbulb} label="Approach" tone="primary">
+          <CaseBlock icon={Lightbulb} label="What I built" tone="primary">
             {project.solution}
           </CaseBlock>
 
-          <CaseBlock icon={TrendingUp} label="Impact" tone="signal">
+          <CaseBlock icon={TrendingUp} label="Results" tone="signal">
             <ul className="flex flex-col gap-2">
               {project.impact.map((item, i) => (
                 <li key={i} className="flex gap-2.5">
@@ -235,7 +235,7 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
             </ul>
           </CaseBlock>
 
-          <CaseBlock icon={Layers3} label="Architecture" tone="muted">
+          <CaseBlock icon={Layers3} label="How it's built" tone="muted">
             <ul className="flex flex-col gap-2 font-mono text-xs leading-relaxed">
               {project.architecture.map((item, i) => (
                 <li key={i} className="flex gap-2.5">

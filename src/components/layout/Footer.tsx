@@ -29,8 +29,8 @@ export function Footer() {
             </div>
 
             <p className="max-w-sm text-sm leading-relaxed text-fg-muted">
-              {site.currentTitle} at {site.currentCompany}. Building APIs, data pipelines and
-              interfaces that are measured by what they improve.
+              {site.currentTitle} at {site.currentCompany}. I build web apps and backends, and
+              play around with machine learning on the side.
             </p>
 
             <a
@@ -91,12 +91,12 @@ export function Footer() {
               })}
               <li>
                 <a
-                  href={site.resumePath}
+                  href={site.resumeDriveUrl}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group inline-flex items-center gap-2.5 text-sm text-fg-muted transition-colors hover:text-fg"
                 >
-                  Résumé (PDF)
+                  Resume (Google Drive)
                   <ArrowUpRight className="size-3 opacity-0 transition-opacity group-hover:opacity-100" />
                 </a>
               </li>

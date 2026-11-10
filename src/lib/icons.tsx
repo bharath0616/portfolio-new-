@@ -24,6 +24,7 @@ import {
   SiDocker,
   SiGit,
   SiMysql,
+  SiAnthropic,
 } from 'react-icons/si';
 // LinkedIn, AWS and Salesforce marks were dropped from the `si` set in react-icons v5;
 // the Font Awesome 6 set still carries them.
@@ -53,6 +54,7 @@ export const brandIcons = {
   microsoft: VscAzure,
   aws: FaAws,
   udemy: SiUdemy,
+  anthropic: SiAnthropic,
 } satisfies Record<string, IconComponent>;
 
 export const groupIcons = {
@@ -79,14 +81,8 @@ export type TechIcon = {
 };
 
 /**
- * Technology marquee. Ordered to open with the strongest signals.
- *
- * Colors are the official brand hexes; they appear only on hover so the default
- * state stays monochrome and calm.
- *
- * Kept in sync with `content/skills.ts` — editors, API clients and notebooks were
- * dropped because "VS Code" and "Postman" are not differentiating skills, and every
- * extra logo dilutes the ones that matter.
+ * Logos that scroll along the bottom of the hero.
+ * Colors are the official brand colors, only shown on hover.
  */
 export const techStack: readonly TechIcon[] = [
   { name: 'React', Icon: SiReact, color: '#61DAFB' },

@@ -127,7 +127,7 @@ export function Hero() {
             <Magnetic strength={0.25}>
               <LinkButton href={site.resumePath} variant="primary" size="lg" download>
                 <Download className="size-4" aria-hidden />
-                Download résumé
+                Download resume
               </LinkButton>
             </Magnetic>
 
