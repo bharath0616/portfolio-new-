@@ -29,8 +29,7 @@ export function Footer() {
             </div>
 
             <p className="max-w-sm text-sm leading-relaxed text-fg-muted">
-              {site.currentTitle} at {site.currentCompany}. I build web apps and backends, and
-              play around with machine learning on the side.
+              {site.currentTitle} at {site.currentCompany}, working on Salesforce.
             </p>
 
             <a

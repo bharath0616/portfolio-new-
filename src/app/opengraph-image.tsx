@@ -19,11 +19,11 @@ const CAPABILITIES = [
  * Note: `next/og` supports a restricted CSS subset (flexbox only, no grid, no CSS
  * variables), so this file intentionally uses inline styles and explicit hex values.
  */
-// Deliberately NOT `runtime = 'edge'` — the edge runtime opts this route out of
+// Deliberately NOT `runtime = 'edge'`, the edge runtime opts this route out of
 // static generation, which would mean re-rendering the card on every social-crawler
 // hit. On the Node runtime it is prerendered once at build time and served as a
 // static PNG.
-export const alt = `${site.name} — ${site.currentTitle} at ${site.currentCompany}`;
+export const alt = `${site.name} | ${site.currentTitle} at ${site.currentCompany}`;
 export const size = { width: 1200, height: 630 };
 export const contentType = 'image/png';
 

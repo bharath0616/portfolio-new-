@@ -26,13 +26,14 @@ export function Skills() {
         <SectionHeader
           id="skills"
           eyebrow="Skills"
-          title="What I work with."
+          title="What I work with"
           description="Hover over any skill to see where I've used it."
         />
 
         <div className="mt-16 grid gap-8 lg:grid-cols-12 lg:gap-12">
-          {/* Category rail */}
-          <div className="lg:col-span-4">
+          {/* Category rail. `min-w-0` lets the tab row scroll sideways on small
+              screens instead of stretching the grid (and the whole page) wider. */}
+          <div className="min-w-0 lg:col-span-4">
             <div
               role="tablist"
               aria-label="Skill categories"
@@ -92,7 +93,7 @@ export function Skills() {
           </div>
 
           {/* Skill grid */}
-          <div className="lg:col-span-8">
+          <div className="min-w-0 lg:col-span-8">
             {current && (
               <div
                 role="tabpanel"

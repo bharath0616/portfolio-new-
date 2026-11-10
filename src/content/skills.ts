@@ -23,6 +23,20 @@ export type SkillGroup = {
 };
 
 export const skillGroups: readonly SkillGroup[] = [
+  // First, so it's the tab people see when they reach the section — it's my day job.
+  {
+    id: 'salesforce',
+    label: 'Salesforce',
+    blurb: 'What I work with day to day at PwC.',
+    icon: 'cloud',
+    skills: [
+      { name: 'Salesforce Platform', level: 'core', context: 'Client projects at PwC since July 2025' },
+      { name: 'Apex', level: 'core', context: 'Backend logic for client features at PwC' },
+      { name: 'LWC', level: 'core', context: 'UI components at PwC, including reusable ones' },
+      { name: 'SOQL', level: 'core', context: 'Writing and tuning queries over 10K+ records' },
+      { name: 'API Integrations', level: 'strong', context: 'Request/response mapping with external systems' },
+    ],
+  },
   {
     id: 'languages',
     label: 'Languages',
@@ -52,21 +66,9 @@ export const skillGroups: readonly SkillGroup[] = [
     ],
   },
   {
-    id: 'salesforce',
-    label: 'Salesforce',
-    blurb: 'What I work with day to day at PwC.',
-    icon: 'cloud',
-    skills: [
-      { name: 'Apex', level: 'core', context: 'Backend logic for client features at PwC' },
-      { name: 'LWC', level: 'core', context: 'UI components at PwC, including reusable ones' },
-      { name: 'SOQL', level: 'core', context: 'Writing and tuning queries over 10K+ records' },
-      { name: 'API Integrations', level: 'strong', context: 'Request/response mapping with external systems' },
-    ],
-  },
-  {
     id: 'ml',
     label: 'Machine Learning & AI',
-    blurb: "Things I've picked up through projects, courses and my Urbanchat.ai stint.",
+    blurb: 'Learned through projects, courses and my work at Urbanchat.ai.',
     icon: 'brain',
     skills: [
       { name: 'scikit-learn', level: 'strong', context: 'Logistic regression model in AttriTrack' },

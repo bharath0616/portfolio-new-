@@ -1,8 +1,6 @@
 /**
  * Projects.
- *
- * Each one is written as: the problem → what I built → results → how it's built.
- * `onResume` marks the ones that are also listed on my PDF resume.
+ * `onResume` marks the ones that are also on my PDF resume.
  */
 
 import type { Metric } from './experience';
@@ -34,6 +32,7 @@ export type Project = {
   solution: string;
   architecture: readonly string[];
   impact: readonly string[];
+  /** Optional big numbers above the text. Left empty for now. */
   metrics: readonly Metric[];
   stack: readonly string[];
   links: readonly ProjectLink[];
@@ -45,7 +44,7 @@ export const projects: readonly Project[] = [
     title: 'Personalized Finance Assistance',
     category: 'Personal Finance App',
     tagline:
-      'A MERN app (I called it FinanceFix) for tracking income, expenses and investments in one place, with an AI chatbot you can ask questions.',
+      'A MERN app (FinanceFix) to track income, expenses and investments in one place, with an AI chatbot.',
     year: '2024',
     featured: true,
     onResume: true,
@@ -56,22 +55,22 @@ export const projects: readonly Project[] = [
       alt: 'FinanceFix dashboard showing income, expense and investment tracking',
     },
     problem:
-      'Most finance apps either track your spending or show market data, not both. I wanted one app where you can see what you earn, what you spend, and where you could invest.',
+      'Most finance apps either track spending or show market data. I wanted both in one app.',
     solution:
-      "I built it on the MERN stack. You add your income and expenses, and the app pulls stock and mutual fund data from external APIs to suggest investments based on your profile. There's also an AI chatbot you can chat with about your finances.",
+      'Built with MongoDB, Express, React and Node.js. Users add their income and expenses, and the app uses finance APIs to suggest stocks and mutual funds based on their profile. It also has an AI chatbot for finance questions.',
     architecture: [
-      'React frontend, with debounced inputs so it does not fire a request on every keystroke',
-      'Node.js + Express backend that handles all the external finance API calls',
+      'React frontend with debounced inputs',
+      'Node.js and Express backend that calls the finance APIs',
       'MongoDB for users, transactions and portfolio data',
       'Pagination on the transaction and recommendation lists',
-      'AI chatbot for finance questions',
+      'AI chatbot',
     ],
     impact: [
-      'Cut API calls by about 50% by adding pagination and debouncing.',
-      'Income, expenses and investments all in one place, with real-time portfolio insights.',
-      "Stock and mutual fund suggestions based on the user's own profile.",
+      'Cut API calls by about 50% using pagination and debouncing.',
+      'Income, expenses and investments on one dashboard.',
+      "Stock and mutual fund suggestions based on the user's profile.",
     ],
-    metrics: [{ value: '50%', label: 'Fewer API calls' }],
+    metrics: [],
     stack: ['MongoDB', 'Express', 'React', 'Node.js', 'REST APIs', 'AI Chatbot'],
     links: [
       { label: 'Source', href: 'https://github.com/bharath0616/PFA', kind: 'github' },
@@ -82,8 +81,7 @@ export const projects: readonly Project[] = [
     id: 'attritrack',
     title: 'AttriTrack',
     category: 'Machine Learning',
-    tagline:
-      'Predicts whether a customer is likely to leave, using a logistic regression model with 90% accuracy.',
+    tagline: 'A logistic regression model that predicts if a customer is likely to leave.',
     year: '2024',
     featured: true,
     onResume: true,
@@ -94,33 +92,29 @@ export const projects: readonly Project[] = [
       alt: 'AttriTrack customer churn prediction interface',
     },
     problem:
-      "Businesses want to know which customers are about to leave so they can do something before it happens. The catch is that real customer data is messy. The dataset I worked with had 100+ missing values.",
+      'Companies want to know which customers might leave. The dataset I used had 100+ missing values, so it needed cleaning before training.',
     solution:
-      'I cleaned up the data first (handling the missing values and preprocessing the features), then trained a logistic regression model with Python and scikit-learn. The model runs behind a Flask backend, with a simple React frontend to enter customer details and see the prediction.',
+      'I cleaned the data with Pandas and trained a logistic regression model using scikit-learn. A Flask backend serves the model, and a small React frontend lets you enter customer details and see the prediction.',
     architecture: [
-      'Data cleaning and preprocessing with Pandas and NumPy',
+      'Data cleaning with Pandas and NumPy',
       'Logistic regression model trained with scikit-learn',
       'Flask backend that serves the model',
-      'React frontend to enter customer details and see the result',
+      'React frontend for entering customer details',
     ],
     impact: [
-      'Got 90% accuracy predicting customer attrition.',
-      'Improved dataset quality by 15% through preprocessing, which also helped the model perform better.',
-      'Usable through a small web app instead of only a notebook.',
+      'Got 90% accuracy on predicting customer attrition.',
+      'Handled 100+ missing values during preprocessing.',
+      'Can be used through a simple web app, not just a notebook.',
     ],
-    metrics: [
-      { value: '90%', label: 'Model accuracy' },
-      { value: '15%', label: 'Better data quality' },
-    ],
+    metrics: [],
     stack: ['Python', 'scikit-learn', 'Pandas', 'NumPy', 'Flask', 'React'],
     links: [{ label: 'Source', href: 'https://github.com/bharath0616/AttriTrack', kind: 'github' }],
   },
   {
     id: 'ivyestate',
     title: 'IvyEstate',
-    category: 'Real Estate Marketplace',
-    tagline:
-      'A MERN real estate site where people can list, browse and search properties, with JWT and Google sign-in.',
+    category: 'Real Estate Website',
+    tagline: 'A real estate website where users can list, search and manage properties.',
     year: '2024',
     featured: true,
     onResume: false,
@@ -128,23 +122,24 @@ export const projects: readonly Project[] = [
       src: '/projects/ivyestate.png',
       width: 1200,
       height: 800,
-      alt: 'IvyEstate property marketplace listing page',
+      alt: 'IvyEstate property listing page',
     },
     problem:
-      'A property site needs to work for two kinds of users: buyers who want to quickly narrow down listings, and sellers who want an easy way to post a property with photos.',
+      'I wanted to build a full property listing site where buyers can search listings and sellers can post properties with photos.',
     solution:
-      'I built it with the MERN stack. Users can sign up with email and password (JWT) or with Google. Redux Toolkit manages the app state, sellers can upload property images, and buyers get search with filters.',
+      'Built with the MERN stack. Users can sign in with email (JWT) or Google. Redux Toolkit handles the app state, sellers can upload photos, and buyers can search with filters.',
     architecture: [
-      'JWT login, plus Google OAuth as another way to sign in',
-      'Redux Toolkit for listing and user state',
+      'JWT login, plus Google sign-in',
+      'Redux Toolkit for listings and user state',
       'Express REST API with protected routes for creating, editing and deleting listings',
       'MongoDB for listings and users',
       'Image upload for property photos',
     ],
     impact: [
-      'Two ways to sign in, so sellers can get started quickly.',
-      'Search with filters to find relevant listings fast.',
-      'Full flow from browsing to creating and managing listings, deployed and live.',
+      'Sign in with email or Google.',
+      'Search listings with filters.',
+      'Create, edit and delete your own listings.',
+      'Deployed and live on Render.',
     ],
     metrics: [],
     stack: ['MongoDB', 'Express', 'React', 'Node.js', 'Redux Toolkit', 'JWT', 'Google OAuth'],
@@ -157,8 +152,7 @@ export const projects: readonly Project[] = [
     id: 'salus',
     title: 'Salus',
     category: 'Computer Vision',
-    tagline:
-      'A video analytics project for safety and security, using ML on camera footage with a MERN app on top.',
+    tagline: 'A video analytics project for safety and security, using ML with a MERN app.',
     year: '2024',
     featured: false,
     onResume: false,
@@ -166,20 +160,20 @@ export const projects: readonly Project[] = [
       src: '/projects/salus.png',
       width: 1200,
       height: 800,
-      alt: 'Salus intelligent video analytics dashboard',
+      alt: 'Salus video analytics dashboard',
     },
     problem:
-      "Security footage is only useful if someone is watching it, and having people watch cameras all day doesn't scale. Most of the time footage only gets checked after something has already happened.",
+      'Security cameras record a lot of footage, but someone has to watch it to catch anything.',
     solution:
-      'Salus runs machine learning models on video to analyse it for safety and security. I used the MERN stack for the UI and to connect the ML part to the rest of the app.',
+      'Salus uses machine learning models to analyse video for safety and security. I used the MERN stack for the dashboard and to connect the ML part to the app.',
     architecture: [
       'ML models that analyse the video',
       'MERN app for the dashboard',
-      'Backend that connects the model output to the app',
+      'Backend that sends the model results to the app',
     ],
     impact: [
-      "Moves from someone watching footage to the model doing the analysis.",
-      'Shows the results in a dashboard instead of raw model output.',
+      'The model analyses the video, so no one has to watch it all the time.',
+      'Results show up in a dashboard.',
     ],
     metrics: [],
     stack: ['MongoDB', 'Express', 'React', 'Node.js', 'Machine Learning', 'Computer Vision'],

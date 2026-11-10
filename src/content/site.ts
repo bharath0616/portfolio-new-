@@ -5,6 +5,13 @@
 
 export const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? 'https://bharath1603.vercel.app';
 
+/**
+ * Google Drive file ID of my resume (the part after /file/d/ in the share link).
+ * The site always serves the latest version of this file — see
+ * src/app/resume.pdf/route.ts for how to update it.
+ */
+const RESUME_DRIVE_ID = '13gETqEz6jmemN-dPhf9-esHRSQAgyON6';
+
 export const site = {
   name: 'Bharath Mudduluru',
   firstName: 'Bharath',
@@ -15,11 +22,14 @@ export const site = {
   timezone: 'Asia/Kolkata',
   email: 'mbharath1603@gmail.com',
   phone: '+91 9963431015',
-  /** Local copy in /public, used for downloads. */
-  resumePath: '/Bharath-Mudduluru-Resume.pdf',
-  /** Same resume on Google Drive, used for "view" links. */
-  resumeDriveUrl:
-    'https://drive.google.com/file/d/13gETqEz6jmemN-dPhf9-esHRSQAgyON6/view?usp=sharing',
+  /** Always the latest resume, pulled from Google Drive. Used for downloads. */
+  resumePath: '/resume.pdf',
+  resumeFileName: 'Bharath-Mudduluru-Resume.pdf',
+  resumeDriveId: RESUME_DRIVE_ID,
+  /** Same file opened in Google Drive's viewer. */
+  resumeDriveUrl: `https://drive.google.com/file/d/${RESUME_DRIVE_ID}/view?usp=sharing`,
+  /** Backup copy in /public, only used if Google Drive can't be reached. */
+  resumeFallbackPath: '/Bharath-Mudduluru-Resume.pdf',
   availability: {
     open: true,
     label: 'Open to Software Engineering roles',
@@ -32,11 +42,11 @@ export const site = {
     'Backend Developer',
   ],
   tagline:
-    "I work on Salesforce at PwC, mostly Apex, LWC and API integrations. Before that I built Node.js backends and React apps, and I like trying out machine learning on the side.",
+    'Salesforce developer at PwC. I work with Apex, LWC and APIs, and I also build web apps with the MERN stack.',
   bio: [
-    "Hi, I'm Bharath. I'm an Associate at PwC, where I work on Salesforce projects: building features with Apex and LWC, connecting APIs to external systems, and fixing issues that come up in production.",
-    'Before PwC, I was a backend engineer at Urbanchat.ai. I built Node.js and Express APIs for their AI chatbot, worked on a voice AI feature, and improved how accurate the bot was using prompt engineering and Pinecone. Before that, I did a short web development internship at Neovatic Technologies.',
-    "I finished my B.Tech in Computer Science and Business Systems at VIT in 2025. In my free time I build side projects, mostly MERN apps and some ML, and I've done certifications from Google, Microsoft, AWS and Anthropic along the way.",
+    "Hi, I'm Bharath. I work at PwC as an Associate on Salesforce projects. I build features with Apex and LWC, connect Salesforce with other systems using APIs, and fix production issues.",
+    'Before PwC, I worked on the backend of an AI chatbot at Urbanchat.ai using Node.js and Express. Before that, I did a web development internship at Neovatic Technologies.',
+    'I finished my B.Tech at VIT in 2025. In my free time I build side projects, mostly with the MERN stack and some machine learning.',
   ],
 } as const;
 
@@ -44,7 +54,7 @@ export type SocialLink = {
   label: string;
   href: string;
   /** Icon key resolved in the icon registry — keeps content free of JSX. */
-  icon: 'github' | 'linkedin' | 'mail' | 'instagram' | 'phone';
+  icon: 'github' | 'linkedin' | 'mail' | 'phone';
   /** Primary links show up in the hero; the rest only in the footer/contact. */
   primary: boolean;
 };
@@ -67,12 +77,6 @@ export const socials: readonly SocialLink[] = [
     href: `mailto:${site.email}`,
     icon: 'mail',
     primary: true,
-  },
-  {
-    label: 'Instagram',
-    href: 'https://www.instagram.com/bharath0616/',
-    icon: 'instagram',
-    primary: false,
   },
 ] as const;
 

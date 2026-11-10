@@ -17,8 +17,8 @@ const interests = [
 const quickFacts = [
   { label: 'Currently', value: `${site.currentTitle} at ${site.currentCompany}` },
   { label: 'Based in', value: site.location },
-  { label: 'Education', value: 'B.Tech CSBS, VIT — 8.77 CGPA' },
-  { label: 'Work on', value: 'Salesforce, web apps, a bit of ML' },
+  { label: 'Certifications', value: 'Google, Anthropic, Microsoft, AWS' },
+  { label: 'Work on', value: 'Salesforce, web development' },
 ] as const;
 
 /**
@@ -34,7 +34,7 @@ export function About() {
         <SectionHeader
           id="about"
           eyebrow="About"
-          title="A little about me."
+          title="About me"
           description="Software engineer from Hyderabad, working at PwC since July 2025."
         />
 

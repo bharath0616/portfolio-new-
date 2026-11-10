@@ -48,8 +48,8 @@ export function Projects() {
         <SectionHeader
           id="projects"
           eyebrow="Projects"
-          title="Things I've built."
-          description="A few projects from college and my free time. The code for all of them is on my GitHub."
+          title="Things I've built"
+          description="Projects from college and my free time. The code is on my GitHub."
         />
 
         {/* Filter */}
@@ -166,7 +166,7 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
                         : 'border border-line text-fg-secondary hover:bg-tint hover:text-fg',
                       'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
                     )}
-                    aria-label={`${link.label} — ${project.title} (opens in a new tab)`}
+                    aria-label={`${link.label}: ${project.title} (opens in a new tab)`}
                   >
                     {link.kind === 'github' ? (
                       <Github className="size-3.5" aria-hidden />
@@ -216,7 +216,7 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
 
         {/* Problem → Solution → Impact */}
         <div className="flex flex-col gap-5">
-          <CaseBlock icon={Target} label="The problem" tone="warning">
+          <CaseBlock icon={Target} label="Why I built it" tone="warning">
             {project.problem}
           </CaseBlock>
 
@@ -224,7 +224,7 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
             {project.solution}
           </CaseBlock>
 
-          <CaseBlock icon={TrendingUp} label="Results" tone="signal">
+          <CaseBlock icon={TrendingUp} label="Features" tone="signal">
             <ul className="flex flex-col gap-2">
               {project.impact.map((item, i) => (
                 <li key={i} className="flex gap-2.5">
@@ -235,7 +235,7 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
             </ul>
           </CaseBlock>
 
-          <CaseBlock icon={Layers3} label="How it's built" tone="muted">
+          <CaseBlock icon={Layers3} label="Tech details" tone="muted">
             <ul className="flex flex-col gap-2 font-mono text-xs leading-relaxed">
               {project.architecture.map((item, i) => (
                 <li key={i} className="flex gap-2.5">

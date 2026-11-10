@@ -8,7 +8,6 @@ import { cn } from '@/lib/utils';
 import { Section, SectionHeader } from '@/components/ui/Section';
 import { Reveal } from '@/components/ui/Reveal';
 import { Badge } from '@/components/ui/Badge';
-import { MetricTile } from '@/components/ui/Card';
 import { SectionGlow } from '@/components/ui/Backdrop';
 
 /**
@@ -34,8 +33,8 @@ export function Experience() {
         <SectionHeader
           id="experience"
           eyebrow="Experience"
-          title="Where I've worked."
-          description="My full-time job at PwC, plus two roles I did while I was still in college. Click a card to see more."
+          title="Work experience"
+          description="My job at PwC and two roles I did during college. Click a card to see more."
         />
 
         <ol className="mt-16 flex flex-col">
@@ -113,7 +112,7 @@ export function Experience() {
                           <div className="flex shrink-0 items-center gap-3">
                             <span className="font-mono text-xs text-fg-muted">
                               <time dateTime={role.start}>{role.startLabel}</time>
-                              {' — '}
+                              {' - '}
                               {role.end ? (
                                 <time dateTime={role.end}>{role.endLabel}</time>
                               ) : (
@@ -133,17 +132,6 @@ export function Experience() {
                         <p className="mt-4 text-base leading-relaxed text-fg-secondary">
                           {role.summary}
                         </p>
-
-                        {/* Metrics stay visible when collapsed — they are the point. */}
-                        <div className="mt-6 grid grid-cols-2 gap-5 sm:grid-cols-4">
-                          {role.metrics.map((metric) => (
-                            <MetricTile
-                              key={metric.label}
-                              value={metric.value}
-                              label={metric.label}
-                            />
-                          ))}
-                        </div>
                       </button>
 
                       {/* Expandable detail */}
@@ -152,7 +140,7 @@ export function Experience() {
                           <motion.div
                             id={`experience-panel-${role.id}`}
                             role="region"
-                            aria-label={`${role.role} at ${role.company} — details`}
+                            aria-label={`${role.role} at ${role.company}, details`}
                             initial={{ height: 0, opacity: 0 }}
                             animate={{ height: 'auto', opacity: 1 }}
                             exit={{ height: 0, opacity: 0 }}

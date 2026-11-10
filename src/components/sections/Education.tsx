@@ -22,8 +22,8 @@ export function Education() {
         <SectionHeader
           id="education"
           eyebrow="Education"
-          title="Where I studied."
-          description="B.Tech in Computer Science and Business Systems from VIT, Vellore (2021 – 2025)."
+          title="Where I studied"
+          description="B.Tech in Computer Science and Business Systems from VIT, Vellore."
         />
 
         <StaggerGroup stagger={0.07} className="mt-14 grid gap-5 md:grid-cols-3">
@@ -38,7 +38,7 @@ export function Education() {
                     <GraduationCap className="size-5" />
                   </span>
                   <span className="font-mono text-xs text-fg-faint">
-                    {entry.start} — {entry.end}
+                    {entry.start} - {entry.end}
                   </span>
                 </div>
 

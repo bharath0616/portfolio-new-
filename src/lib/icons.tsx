@@ -1,7 +1,6 @@
 import type { ComponentType, SVGProps } from 'react';
 import {
   SiGithub,
-  SiInstagram,
   SiGoogle,
   SiUdemy,
   SiReact,
@@ -44,7 +43,6 @@ type IconComponent = ComponentType<SVGProps<SVGSVGElement>>;
 export const socialIcons = {
   github: SiGithub,
   linkedin: FaLinkedin,
-  instagram: SiInstagram,
   mail: Mail,
   phone: Phone,
 } satisfies Record<string, IconComponent>;
@@ -85,6 +83,7 @@ export type TechIcon = {
  * Colors are the official brand colors, only shown on hover.
  */
 export const techStack: readonly TechIcon[] = [
+  { name: 'Salesforce', Icon: FaSalesforce, color: '#00A1E0' },
   { name: 'React', Icon: SiReact, color: '#61DAFB' },
   { name: 'Next.js', Icon: SiNextdotjs, color: '#FFFFFF' },
   { name: 'TypeScript', Icon: SiTypescript, color: '#3178C6' },
@@ -105,5 +104,4 @@ export const techStack: readonly TechIcon[] = [
   { name: 'Flask', Icon: SiFlask, color: '#FFFFFF' },
   { name: 'Docker', Icon: SiDocker, color: '#2496ED' },
   { name: 'Git', Icon: SiGit, color: '#F05032' },
-  { name: 'Salesforce', Icon: FaSalesforce, color: '#00A1E0' },
 ] as const;

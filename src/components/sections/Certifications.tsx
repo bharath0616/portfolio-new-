@@ -21,8 +21,8 @@ export function Certifications() {
         <SectionHeader
           id="certifications"
           eyebrow="Certifications"
-          title="Courses and certifications."
-          description="Cloud and AI certifications from Google, Anthropic, Microsoft and AWS, plus Machine Learning A–Z on Udemy. Click any card to view the certificate."
+          title="My certifications"
+          description="Click any card to view the certificate."
         />
 
         <StaggerGroup stagger={0.06} className="mt-14 grid gap-5 sm:grid-cols-2">

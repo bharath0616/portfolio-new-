@@ -34,8 +34,8 @@ export function Resume() {
         <SectionHeader
           id="resume"
           eyebrow="Resume"
-          title="My resume."
-          description="A quick read below. You can also download the PDF or open it on Google Drive."
+          title="My resume"
+          description="Download the PDF or view it on Google Drive."
         />
 
         {/* Actions */}
@@ -44,7 +44,7 @@ export function Resume() {
             <Magnetic strength={0.25}>
               <a
                 href={site.resumePath}
-                download="Bharath-Mudduluru-Resume.pdf"
+                download={site.resumeFileName}
                 onClick={handleDownload}
                 className={cn(
                   'group/dl relative inline-flex h-13 items-center justify-center gap-2.5 overflow-hidden',
@@ -146,7 +146,7 @@ export function Resume() {
                           {role.role} · <span className="text-primary">{role.company}</span>
                         </h5>
                         <span className="font-mono text-xs text-fg-faint">
-                          {role.startLabel} — {role.endLabel}
+                          {role.startLabel} - {role.endLabel}
                         </span>
                       </div>
                       <ul className="mt-2.5 flex flex-col gap-1.5">
@@ -259,7 +259,7 @@ export function Resume() {
                         </span>
                       </p>
                       <span className="font-mono text-xs text-fg-faint">
-                        {entry.start} — {entry.end}
+                        {entry.start} - {entry.end}
                       </span>
                     </div>
                   ))}
@@ -272,7 +272,7 @@ export function Resume() {
                   {certifications.map((cert) => (
                     <li key={cert.id} className="text-sm text-fg-muted">
                       <span className="font-medium text-fg">{cert.name}</span>
-                      <span className="text-fg-faint"> — {cert.issuer}</span>
+                      <span className="text-fg-faint">, {cert.issuer}</span>
                     </li>
                   ))}
                 </ul>

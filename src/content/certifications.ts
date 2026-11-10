@@ -26,7 +26,7 @@ export const certifications: readonly Certification[] = [
   },
   {
     id: 'claude-developer',
-    name: 'Claude Certified Developer – Foundations',
+    name: 'Claude Certified Developer - Foundations',
     issuer: 'Anthropic',
     brand: 'anthropic',
     scope: 'The basics of building applications with Claude and the Claude API.',
@@ -43,7 +43,7 @@ export const certifications: readonly Certification[] = [
   },
   {
     id: 'claude-architect',
-    name: 'Claude Certified Architect – Foundations',
+    name: 'Claude Certified Architect - Foundations',
     issuer: 'Anthropic',
     brand: 'anthropic',
     scope: 'The basics of designing solutions and systems around Claude.',
@@ -59,7 +59,7 @@ export const certifications: readonly Certification[] = [
   },
   {
     id: 'ml-az',
-    name: 'Machine Learning A–Z',
+    name: 'Machine Learning A-Z',
     issuer: 'Udemy',
     brand: 'udemy',
     scope: 'Hands-on ML course covering regression, classification, clustering and more.',

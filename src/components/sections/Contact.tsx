@@ -78,8 +78,8 @@ export function Contact() {
         <SectionHeader
           id="contact"
           eyebrow="Contact"
-          title="Let's talk."
-          description="Have a question or an opportunity, or just want to say hi? Send me a message and I'll get back to you."
+          title="Get in touch"
+          description="Send me a message here or email me directly."
         />
 
         <div className="mt-14 grid gap-10 lg:grid-cols-12 lg:gap-14">

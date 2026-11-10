@@ -15,7 +15,7 @@ export const leadership: Achievement = {
   id: 'ieee-tems',
   title: 'Technical Head',
   organization: 'IEEE TEMS',
-  period: '2024 – 2025',
+  period: '2024 - 2025',
   detail: 'I was the Technical Head of our IEEE TEMS chapter in college.',
   points: [
     'Led 4 technical domains.',

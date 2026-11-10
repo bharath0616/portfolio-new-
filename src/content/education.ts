@@ -29,7 +29,7 @@ export const education: readonly Education[] = [
   {
     id: 'fiitjee',
     institution: 'FIITJEE',
-    qualification: 'HSC — Class XII',
+    qualification: 'HSC (Class XII)',
     start: '2019',
     end: '2021',
     score: { value: '95%', label: 'TSBIE' },
@@ -38,7 +38,7 @@ export const education: readonly Education[] = [
   {
     id: 'sanskruthi',
     institution: 'Sanskruthi Global School',
-    qualification: 'High School — Class X',
+    qualification: 'High School (Class X)',
     start: '2017',
     end: '2019',
     score: { value: '94.4%', label: 'CBSE' },

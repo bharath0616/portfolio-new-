@@ -24,7 +24,7 @@ export const contactSchema = z.object({
   message: z
     .string()
     .trim()
-    .min(10, 'A little more detail, please — at least 10 characters.')
+    .min(10, 'Please write at least 10 characters.')
     .max(2000, 'Please keep it under 2000 characters.'),
   /**
    * Honeypot. Hidden from users but visible to naive bots, which fill every field

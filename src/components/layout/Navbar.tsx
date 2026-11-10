@@ -58,7 +58,7 @@ export function Navbar({ onOpenCommand }: { onOpenCommand: () => void }) {
           <a
             href="#top"
             className="group flex shrink-0 items-center gap-2.5 rounded-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 focus-visible:ring-offset-[var(--bg-base)]"
-            aria-label={`${site.name} — back to top`}
+            aria-label={`${site.name}, back to top`}
           >
             <span className="relative flex size-8 items-center justify-center rounded-lg bg-fg font-mono text-sm font-bold text-[color:var(--bg-base)]">
               BM

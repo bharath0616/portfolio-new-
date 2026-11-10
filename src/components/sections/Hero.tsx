@@ -1,5 +1,6 @@
 'use client';
 
+import { Fragment } from 'react';
 import { motion } from 'framer-motion';
 import { ArrowDown, Download, MapPin } from 'lucide-react';
 import { site, socials } from '@/content/site';
@@ -24,7 +25,7 @@ import { SectionGlow } from '@/components/ui/Backdrop';
  */
 export function Hero() {
   const reduced = usePrefersReducedMotion();
-  const nameChars = splitChars(site.name);
+  const nameWords = site.name.split(' ');
   const primarySocials = socials.filter((social) => social.primary);
 
   return (
@@ -51,18 +52,18 @@ export function Hero() {
           </motion.div>
 
           {/*
-            Name.
+            Name. Sized to fit on one line on desktop; on phones it wraps between
+            the first and last name. Each word is `nowrap` so the per-letter
+            animation spans can never break a word in the middle.
 
-            Solid `text-fg`, deliberately NOT gradient-clipped text. Each character
-            is its own transformed element for the stagger, and a transformed child
-            establishes its own containing block — so a `background-clip: text`
-            gradient set on the parent cannot paint through the children, while the
-            parent's `color: transparent` still inherits down to them. That renders
-            invisible glyphs in both themes. Solid colour also gives this line the
-            strongest contrast on the page (16.6:1), which is right for the single
-            most important piece of text here.
+            Solid colour on purpose — gradient text (`background-clip: text`) does
+            not paint through the individually transformed letters and would make
+            the name invisible.
           */}
-          <h1 id="hero-heading" className="text-6xl font-semibold leading-[0.95] text-fg">
+          <h1
+            id="hero-heading"
+            className="text-[clamp(2.75rem,1.5rem+5vw,5rem)] font-semibold leading-[1] text-fg"
+          >
             <span className="sr-only">{site.name}</span>
             {reduced ? (
               <span aria-hidden className="block">
@@ -72,16 +73,23 @@ export function Hero() {
               <motion.span
                 aria-hidden
                 variants={staggerContainer(0.028, 0.15)}
-                className="block [perspective:800px]"
+                className="block"
               >
-                {nameChars.map((char, index) => (
-                  <motion.span
-                    key={`${char}-${index}`}
-                    variants={charReveal}
-                    className="inline-block will-change-transform"
-                  >
-                    {char === ' ' ? ' ' : char}
-                  </motion.span>
+                {nameWords.map((word, wordIndex) => (
+                  <Fragment key={`${word}-${wordIndex}`}>
+                    {wordIndex > 0 && ' '}
+                    <span className="inline-block whitespace-nowrap [perspective:800px]">
+                      {splitChars(word).map((char, index) => (
+                        <motion.span
+                          key={`${char}-${index}`}
+                          variants={charReveal}
+                          className="inline-block will-change-transform"
+                        >
+                          {char}
+                        </motion.span>
+                      ))}
+                    </span>
+                  </Fragment>
                 ))}
               </motion.span>
             )}

@@ -11,7 +11,7 @@ import { allSkills } from '@/content/skills';
  * This is what lets Google render a knowledge-panel-style result for a name query
  * instead of a plain blue link, and it is how AI search surfaces read a profile.
  * Built from the same content layer as the visible page, so the structured data can
- * never contradict what a human sees — which is exactly what triggers a spam flag.
+ * never contradict what a human sees, which is exactly what triggers a spam flag.
  */
 export function buildPersonSchema() {
   return {
@@ -62,7 +62,7 @@ export function buildProfilePageSchema() {
     '@type': 'ProfilePage',
     '@id': `${SITE_URL}/#profilepage`,
     url: SITE_URL,
-    name: `${site.name} — ${site.role}`,
+    name: `${site.name} | ${site.role}`,
     mainEntity: { '@id': `${SITE_URL}/#person` },
     dateModified: new Date().toISOString(),
   };
@@ -111,7 +111,7 @@ export function buildExperienceSchema() {
   };
 }
 
-/** Combined graph — one script tag rather than four. */
+/** Combined graph, one script tag rather than four. */
 export function buildFullSchema() {
   return [
     buildPersonSchema(),

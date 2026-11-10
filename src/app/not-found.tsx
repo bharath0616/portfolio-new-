@@ -31,7 +31,7 @@ export default function NotFound() {
 
       <p className="mt-4 max-w-md text-base leading-relaxed text-fg-muted">
         The link may be outdated or mistyped. Everything on this site lives on a single
-        page — pick a section below.
+        page. Pick a section below.
       </p>
 
       <div className="mt-9 flex flex-wrap items-center justify-center gap-3">
