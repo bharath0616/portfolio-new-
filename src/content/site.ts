@@ -32,20 +32,20 @@ export const site = {
   resumeFallbackPath: '/Bharath-Mudduluru-Resume.pdf',
   availability: {
     open: true,
-    label: 'Open to Software Engineering roles',
+    label: 'Open to Software Engineering & AI roles',
   },
   /** Lines that rotate in the hero typewriter. */
   roles: [
     'Associate @ PwC',
     'Salesforce Developer',
+    'AI Enthusiast',
     'Full-Stack Developer',
-    'Backend Developer',
   ],
   tagline:
-    'Salesforce developer at PwC, working with Apex, LWC, APIs and Agentforce to build Gen AI agents. I also build web apps and AI projects.',
+    "Salesforce developer at PwC, working with Apex, LWC, APIs and Agentforce to build Gen AI agents. I'm also an AI enthusiast and love building side projects.",
   bio: [
-    "Hi, I'm Bharath. I work at PwC as an Associate on Salesforce projects. I build features with Apex and LWC, connect Salesforce with other systems using APIs, and fix production issues. I also work with Agentforce, building Gen AI agents on Salesforce that use LLMs.",
-    'Before PwC, I worked on the backend of an AI chatbot at Urbanchat.ai using Node.js and Express. Before that, I did a web development internship at Neovatic Technologies.',
+    "Hi, I'm Bharath. I'm an Associate at PwC, where I work on Salesforce and Gen AI.",
+    'Before PwC, I worked on an AI chatbot at Urbanchat.ai and did a web development internship at Neovatic Technologies.',
     'I finished my B.Tech at VIT in 2025. In my free time I build web apps and AI and machine learning projects.',
   ],
 } as const;

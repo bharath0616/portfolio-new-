@@ -30,9 +30,9 @@ export const skillGroups: readonly SkillGroup[] = [
     blurb: 'What I work with day to day at PwC.',
     icon: 'cloud',
     skills: [
-      { name: 'Salesforce Platform', level: 'core', context: 'Client projects at PwC since July 2025' },
+      { name: 'Salesforce Platform', level: 'core', context: 'My day-to-day work at PwC' },
       { name: 'Agentforce', level: 'strong', context: 'Building Gen AI agents on Salesforce at PwC' },
-      { name: 'Apex', level: 'core', context: 'Backend logic for client features at PwC' },
+      { name: 'Apex', level: 'core', context: 'Backend logic for features at PwC' },
       { name: 'LWC', level: 'core', context: 'UI components at PwC, including reusable ones' },
       { name: 'SOQL', level: 'core', context: 'Writing and tuning queries over 10K+ records' },
       { name: 'API Integrations', level: 'strong', context: 'Request/response mapping with external systems' },

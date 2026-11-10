@@ -36,7 +36,7 @@ export const experience: readonly Experience[] = [
     location: 'India',
     type: 'Full-time',
     summary:
-      'I work on Salesforce projects for clients. I build features with Apex and LWC, work on Gen AI agents with Agentforce, connect Salesforce to other systems using APIs, and fix production issues.',
+      'I work on Salesforce projects. I build features with Apex and LWC, work on Gen AI agents with Agentforce, connect Salesforce to other systems using APIs, and fix production issues.',
     highlights: [
       'Worked with Agentforce to build Gen AI agents in Salesforce that use LLMs.',
       'Built API integrations between Salesforce and external systems, including request and response mapping.',

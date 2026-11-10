@@ -17,15 +17,15 @@ const interests = [
 const quickFacts = [
   { label: 'Currently', value: `${site.currentTitle} at ${site.currentCompany}` },
   { label: 'Based in', value: site.location },
-  { label: 'Certifications', value: 'Google, Anthropic, Microsoft, AWS' },
-  { label: 'Work on', value: 'Salesforce, Agentforce (Gen AI), web development' },
+  { label: 'Certified in', value: 'AI and cloud' },
+  { label: 'Work on', value: 'Salesforce and Gen AI' },
 ] as const;
 
 /**
  * About — a server component. Static content should never cost the client any JS.
  *
- * Layout is asymmetric (7/5) rather than a centered column, so the section has its
- * own identity while still reading top-to-bottom on mobile.
+ * Text on the left (8 columns), a small photo on the right (4 columns).
+ * On mobile they stack, with the photo centered below the text.
  */
 export function About() {
   return (
@@ -40,7 +40,7 @@ export function About() {
 
         <div className="mt-16 grid gap-12 lg:grid-cols-12 lg:gap-16">
           {/* Narrative */}
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             <StaggerGroup className="flex flex-col gap-6" stagger={0.08}>
               {site.bio.map((paragraph, index) => (
                 <RevealItem key={index}>
@@ -93,17 +93,21 @@ export function About() {
           </div>
 
           {/* Portrait */}
-          <div className="lg:col-span-5">
-            <Reveal delay={0.1} className="lg:sticky lg:top-28">
+          <div className="lg:col-span-4">
+            {/* Capped at 280px so the photo stays small: centered on phones,
+                right-aligned next to the text on desktop. */}
+            <Reveal
+              delay={0.1}
+              className="mx-auto w-full max-w-[280px] lg:sticky lg:top-28 lg:mr-0"
+            >
               <Panel className="overflow-hidden p-0">
                 <div className="relative aspect-4/5 w-full overflow-hidden bg-subtle">
                   <Image
                     src="/avatar.png"
                     alt={`Portrait of ${site.name}`}
                     fill
-                    // Tells the optimizer the real rendered width per breakpoint so it
-                    // never ships a 2x desktop image to a phone.
-                    sizes="(max-width: 1024px) 100vw, 40vw"
+                    // The photo is never wider than 280px.
+                    sizes="280px"
                     className="object-cover object-center"
                     priority={false}
                   />
@@ -114,16 +118,11 @@ export function About() {
                   />
                 </div>
 
-                <div className="flex items-center justify-between gap-4 border-t border-line-subtle p-5">
-                  <div>
-                    <p className="text-base font-semibold text-fg">{site.name}</p>
-                    <p className="text-sm text-fg-muted">
-                      {site.currentTitle}, {site.currentCompany}
-                    </p>
-                  </div>
-                  <span className="font-mono text-2xs uppercase tracking-[0.16em] text-fg-faint">
-                    {site.location.split(',')[0]}
-                  </span>
+                <div className="border-t border-line-subtle p-5">
+                  <p className="text-base font-semibold text-fg">{site.name}</p>
+                  <p className="text-sm text-fg-muted">
+                    {site.currentTitle}, {site.currentCompany}
+                  </p>
                 </div>
               </Panel>
             </Reveal>

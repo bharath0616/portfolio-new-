@@ -169,9 +169,8 @@ export function Contact() {
             </div>
 
             <p className="rounded-[var(--radius-card)] border border-line-subtle bg-tint-weak p-5 text-sm leading-relaxed text-fg-muted">
-              I&apos;m currently working as an {site.currentTitle} at {site.currentCompany}, and
-              I&apos;m <span className="text-fg">{site.availability.label.toLowerCase()}</span>. I
-              usually reply within a day or two.
+              Currently an {site.currentTitle} at {site.currentCompany}.{' '}
+              <span className="text-fg">Open to software engineering and AI roles.</span>
             </p>
           </div>
 
