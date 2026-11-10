@@ -42,9 +42,9 @@ export const site = {
     'Backend Developer',
   ],
   tagline:
-    'Salesforce developer at PwC. I work with Apex, LWC and APIs, and I also build web apps with the MERN stack.',
+    'Salesforce developer at PwC. I work with Apex, LWC, APIs and Agentforce (Gen AI agents), and I also build web apps with the MERN stack.',
   bio: [
-    "Hi, I'm Bharath. I work at PwC as an Associate on Salesforce projects. I build features with Apex and LWC, connect Salesforce with other systems using APIs, and fix production issues.",
+    "Hi, I'm Bharath. I work at PwC as an Associate on Salesforce projects. I build features with Apex and LWC, connect Salesforce with other systems using APIs, and fix production issues. I also work with Agentforce, building Gen AI agents on Salesforce that use LLMs.",
     'Before PwC, I worked on the backend of an AI chatbot at Urbanchat.ai using Node.js and Express. Before that, I did a web development internship at Neovatic Technologies.',
     'I finished my B.Tech at VIT in 2025. In my free time I build side projects, mostly with the MERN stack and some machine learning.',
   ],

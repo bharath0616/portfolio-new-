@@ -31,6 +31,7 @@ export const skillGroups: readonly SkillGroup[] = [
     icon: 'cloud',
     skills: [
       { name: 'Salesforce Platform', level: 'core', context: 'Client projects at PwC since July 2025' },
+      { name: 'Agentforce', level: 'strong', context: 'Building Gen AI agents on Salesforce at PwC' },
       { name: 'Apex', level: 'core', context: 'Backend logic for client features at PwC' },
       { name: 'LWC', level: 'core', context: 'UI components at PwC, including reusable ones' },
       { name: 'SOQL', level: 'core', context: 'Writing and tuning queries over 10K+ records' },
@@ -68,9 +69,10 @@ export const skillGroups: readonly SkillGroup[] = [
   {
     id: 'ml',
     label: 'Machine Learning & AI',
-    blurb: 'Learned through projects, courses and my work at Urbanchat.ai.',
+    blurb: 'Gen AI at work (Agentforce at PwC, chatbots at Urbanchat.ai), plus ML from projects and courses.',
     icon: 'brain',
     skills: [
+      { name: 'Gen AI & LLMs', level: 'strong', context: 'Agentforce agents at PwC and chatbot work at Urbanchat.ai' },
       { name: 'scikit-learn', level: 'strong', context: 'Logistic regression model in AttriTrack' },
       { name: 'Pandas', level: 'strong', context: 'Cleaning data and handling missing values' },
       { name: 'NumPy', level: 'strong', context: 'Number work in my ML projects' },

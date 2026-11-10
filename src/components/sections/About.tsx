@@ -18,7 +18,7 @@ const quickFacts = [
   { label: 'Currently', value: `${site.currentTitle} at ${site.currentCompany}` },
   { label: 'Based in', value: site.location },
   { label: 'Certifications', value: 'Google, Anthropic, Microsoft, AWS' },
-  { label: 'Work on', value: 'Salesforce, web development' },
+  { label: 'Work on', value: 'Salesforce, Agentforce (Gen AI), web development' },
 ] as const;
 
 /**

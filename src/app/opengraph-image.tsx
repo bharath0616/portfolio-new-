@@ -4,9 +4,9 @@ import { site } from '@/content/site';
 /** Short list along the bottom of the share card. */
 const CAPABILITIES = [
   'Salesforce · Apex · LWC',
+  'Agentforce · Gen AI',
   'MERN Stack',
   'APIs & Backend',
-  'Machine Learning',
 ] as const;
 
 /**
