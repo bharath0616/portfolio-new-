@@ -2,7 +2,15 @@
 
 import Image from 'next/image';
 import { AnimatePresence, motion } from 'framer-motion';
-import { ArrowUpRight, Github, Layers3, Lightbulb, Target, TrendingUp } from 'lucide-react';
+import {
+  ArrowUpRight,
+  ChevronDown,
+  Github,
+  Layers3,
+  Lightbulb,
+  Target,
+  TrendingUp,
+} from 'lucide-react';
 import { useMemo, useState } from 'react';
 import { projects, type Project } from '@/content/projects';
 import { cn } from '@/lib/utils';
@@ -14,7 +22,7 @@ import { SpotlightCard } from '@/components/ui/Card';
 import { Tilt } from '@/components/ui/Tilt';
 import { SectionGlow } from '@/components/ui/Backdrop';
 
-/** Filter facets, derived from the data so they can never drift out of sync. */
+/** Filter options. Which projects match is worked out from each project's stack. */
 const FILTERS = ['All', 'Full-Stack', 'Machine Learning'] as const;
 type Filter = (typeof FILTERS)[number];
 
@@ -29,16 +37,23 @@ function matchesFilter(project: Project, filter: Filter) {
 /**
  * Projects.
  *
- * Structured as problem → approach → impact rather than a feature dump, because
- * that is the shape an interviewer reads for and the shape they will ask about.
- *
- * Filtering animates with `layout` so cards physically reflow instead of the list
- * snapping — the motion shows what was removed rather than just presenting a new set.
+ * Every project starts collapsed, showing just its category and title. Clicking
+ * the card opens the full details (screenshot, links, write-up, stack). More than
+ * one can be open at a time, so opening one never shifts the card you clicked.
  */
 export function Projects() {
   const [filter, setFilter] = useState<Filter>('All');
+  const [open, setOpen] = useState<ReadonlySet<string>>(() => new Set());
 
   const visible = useMemo(() => projects.filter((p) => matchesFilter(p, filter)), [filter]);
+
+  const toggle = (id: string) =>
+    setOpen((current) => {
+      const next = new Set(current);
+      if (next.has(id)) next.delete(id);
+      else next.add(id);
+      return next;
+    });
 
   return (
     <Section id="projects" className="relative">
@@ -49,7 +64,7 @@ export function Projects() {
           id="projects"
           eyebrow="Projects"
           title="Things I've built"
-          description="Projects from college and my free time. The code is on my GitHub."
+          description="Projects from college and my free time. Click a project to see more."
         />
 
         {/* Filter */}
@@ -93,14 +108,19 @@ export function Projects() {
           </div>
         </Reveal>
 
-        {/* Case studies */}
-        <motion.div layout className="mt-14 flex flex-col gap-20 lg:gap-28">
+        {/* Project list */}
+        <div className="mt-10 flex flex-col gap-4">
           <AnimatePresence mode="popLayout">
-            {visible.map((project, index) => (
-              <ProjectCase key={project.id} project={project} index={index} />
+            {visible.map((project) => (
+              <ProjectItem
+                key={project.id}
+                project={project}
+                isOpen={open.has(project.id)}
+                onToggle={() => toggle(project.id)}
+              />
             ))}
           </AnimatePresence>
-        </motion.div>
+        </div>
 
         {visible.length === 0 && (
           <p className="mt-16 text-center text-fg-muted">No projects match this filter.</p>
@@ -110,23 +130,93 @@ export function Projects() {
   );
 }
 
-function ProjectCase({ project, index }: { project: Project; index: number }) {
-  // Alternate the image side so the page has rhythm instead of a repeating column.
-  const imageFirst = index % 2 === 0;
+function ProjectItem({
+  project,
+  isOpen,
+  onToggle,
+}: {
+  project: Project;
+  isOpen: boolean;
+  onToggle: () => void;
+}) {
+  const headingId = `project-${project.id}-title`;
+  const panelId = `project-${project.id}-panel`;
 
   return (
     <motion.article
-      layout
-      initial={{ opacity: 0, y: 28 }}
+      // "position" only: animates cards sliding when the filter changes, without
+      // stretching a card's contents while it opens or closes.
+      layout="position"
+      initial={{ opacity: 0, y: 20 }}
       whileInView={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -12, transition: { duration: 0.2 } }}
       viewport={{ once: true, margin: '0px 0px -10% 0px' }}
       transition={transitions.base}
-      className="grid gap-10 lg:grid-cols-12 lg:items-start lg:gap-14"
-      aria-labelledby={`project-${project.id}-title`}
+      className={cn(
+        'rounded-[var(--radius-card)] border border-line-subtle bg-elevated',
+        'transition-[border-color,box-shadow] duration-300 hover:border-line',
+        isOpen && 'border-line shadow-[var(--shadow-soft)]',
+      )}
     >
+      {/* Heading row: the only thing shown until the card is opened. */}
+      <h3>
+        <button
+          type="button"
+          id={headingId}
+          onClick={onToggle}
+          aria-expanded={isOpen}
+          aria-controls={panelId}
+          className={cn(
+            'flex w-full items-center justify-between gap-4 rounded-[var(--radius-card)] p-5 text-left sm:p-7',
+            'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary',
+          )}
+        >
+          <span className="min-w-0">
+            <span className="block font-mono text-xs uppercase tracking-[0.16em] text-primary">
+              {project.category}
+            </span>
+            <span className="mt-2 block text-2xl font-semibold leading-tight text-fg sm:text-3xl">
+              {project.title}
+            </span>
+          </span>
+          <ChevronDown
+            className={cn(
+              'size-5 shrink-0 text-fg-faint transition-transform duration-300',
+              isOpen && 'rotate-180',
+            )}
+            aria-hidden
+          />
+        </button>
+      </h3>
+
+      {/* Full details */}
+      <AnimatePresence initial={false}>
+        {isOpen && (
+          <motion.div
+            id={panelId}
+            role="region"
+            aria-labelledby={headingId}
+            initial={{ height: 0, opacity: 0 }}
+            animate={{ height: 'auto', opacity: 1 }}
+            exit={{ height: 0, opacity: 0 }}
+            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+            className="overflow-hidden"
+          >
+            <div className="border-t border-line-subtle p-5 sm:p-7">
+              <ProjectDetails project={project} />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.article>
+  );
+}
+
+function ProjectDetails({ project }: { project: Project }) {
+  return (
+    <div className="grid gap-8 lg:grid-cols-12 lg:items-start lg:gap-12">
       {/* Preview */}
-      <div className={cn('lg:col-span-7', !imageFirst && 'lg:order-2')}>
+      <div className="lg:col-span-7">
         <Tilt max={4}>
           <SpotlightCard className="overflow-hidden">
             <div className="relative aspect-16/10 w-full overflow-hidden bg-subtle">
@@ -135,14 +225,12 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
                 alt={project.image.alt}
                 width={project.image.width}
                 height={project.image.height}
-                sizes="(max-width: 1024px) 100vw, 58vw"
+                sizes="(max-width: 1024px) 100vw, 55vw"
                 className={cn(
                   'size-full object-cover object-top',
                   'transition-transform duration-700 ease-[cubic-bezier(0.16,1,0.3,1)]',
                   'group-hover/card:scale-[1.03]',
                 )}
-                // Only the first case study is above the fold on a tall screen.
-                loading={index === 0 ? 'eager' : 'lazy'}
               />
             </div>
 
@@ -182,25 +270,11 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
         </Tilt>
       </div>
 
-      {/* Narrative */}
-      <div className={cn('flex flex-col gap-6 lg:col-span-5', !imageFirst && 'lg:order-1')}>
-        <div>
-          <p className="font-mono text-xs uppercase tracking-[0.16em] text-primary">
-            {project.category}
-          </p>
-          <h3
-            id={`project-${project.id}-title`}
-            className="mt-2.5 text-3xl font-semibold text-fg"
-          >
-            {project.title}
-          </h3>
-          <p className="mt-3 text-base leading-relaxed text-fg-secondary">
-            {project.tagline}
-          </p>
-        </div>
+      {/* Write-up */}
+      <div className="flex flex-col gap-6 lg:col-span-5">
+        <p className="text-base leading-relaxed text-fg-secondary">{project.tagline}</p>
 
-        {/* Metrics — omitted entirely when a project has no measured outcome,
-            rather than padded with invented ones. */}
+        {/* Big numbers, only if a project has any. */}
         {project.metrics.length > 0 && (
           <dl className="flex flex-wrap gap-x-8 gap-y-4 border-y border-line-subtle py-5">
             {project.metrics.map((metric) => (
@@ -214,7 +288,6 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
           </dl>
         )}
 
-        {/* Problem → Solution → Impact */}
         <div className="flex flex-col gap-5">
           <CaseBlock icon={Target} label="Why I built it" tone="warning">
             {project.problem}
@@ -260,7 +333,7 @@ function ProjectCase({ project, index }: { project: Project; index: number }) {
           ))}
         </ul>
       </div>
-    </motion.article>
+    </div>
   );
 }
 
@@ -271,7 +344,7 @@ const TONES = {
   muted: 'text-fg-faint',
 } as const;
 
-/** Labelled block within a case study. The icon is decorative; the label carries meaning. */
+/** Labelled block in a project's write-up. The icon is decorative; the label carries meaning. */
 function CaseBlock({
   icon: Icon,
   label,
