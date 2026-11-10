@@ -5,8 +5,8 @@ import { site } from '@/content/site';
 const CAPABILITIES = [
   'Salesforce · Apex · LWC',
   'Agentforce · Gen AI',
-  'MERN Stack',
-  'APIs & Backend',
+  'AI & Machine Learning',
+  'Web Apps & APIs',
 ] as const;
 
 /**

@@ -28,7 +28,7 @@ export const experience: readonly Experience[] = [
   {
     id: 'pwc',
     company: 'PwC',
-    role: 'Associate (Salesforce Developer)',
+    role: 'Associate',
     start: '2025-07',
     end: null,
     startLabel: 'Jul 2025',
